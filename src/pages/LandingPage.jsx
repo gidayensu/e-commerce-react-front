@@ -8,7 +8,7 @@ function LandingPage () {
   
     return(
         <>
-        <div className="font-roboto md:mr-64 md:ml-64 mr-8 ml-8 md:mt-10">
+        <div className="md:mr-44 md:ml-44 mr-8 ml-8 md:mt-10">
 
             <section>
                 <div className="flex sm:justify-between sm:mr-20 mt-8">
