@@ -64,7 +64,7 @@ function Products({ featured }) {
           return (
             <div className="flex flex-col justify-center" key={product.id}>
               <div className="relative group">
-                <div className="flex-grow card card-compact lg:w-60 bg-base-100 shadow-xl h-54 cursor-pointer">
+                <div className="flex-grow lg:w-60 bg-base-100 shadow-xl h-54 cursor-pointer">
                   <Link to={`/shop/product/${product.id}`}>
                   <figure className="h-40">
                     {!product.image && (
@@ -79,13 +79,13 @@ function Products({ featured }) {
                     )}
                   </figure>
                   </Link>
-                  <div className="card-body">
-                    <h2 className="card-title line-clamp-2 overflow-hidden text-ellipsis text-sm">
+                  <div className="">
+                    <h2 className="line-clamp-2 overflow-hidden text-ellipsis text-sm">
                       {product.title}
                     </h2>
                     <h2 className="text-sky-800 font-bold">{`GHS ${productPrice}`}</h2>
                   </div>
-                  <div className="md:flex md:gap-4 grid items-center justify-center absolute bottom-14 h-10  md:bg-white bg-sky-900 text-white md:text-black text-2xl mb-4 w-full md:transition-opacity md:duration-300 md:opacity-0 md:group-hover:opacity-100  ">
+                  <div className="md:flex md:gap-4 grid items-center justify-center absolute bottom-14 h-10  md:bg-white bg-sky-700 hover:bg-sky-800 text-white md:text-black text-2xl mb-4 w-full md:transition-opacity md:duration-300 md:opacity-0 md:group-hover:opacity-100  ">
                     <button
                       onClick={() =>
                         addToCartHandler(
@@ -95,7 +95,7 @@ function Products({ featured }) {
                           product.image
                         )
                       }
-                      className="rounded-full hover:bg-sky-700 hover:text-white md:w-7 md:h-7 "
+                      className="md:rounded-full md:hover:bg-sky-700 hover:text-white md:w-7 md:h-7 "
                     >
                       <span className="hidden md:block">
                         <AiOutlineShoppingCart />
