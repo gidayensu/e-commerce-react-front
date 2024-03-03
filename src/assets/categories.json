@@ -1,0 +1,41 @@
+{
+  "categories": [
+      {
+          "id": "c1",
+          "name": "Laptops",
+          "image": "https://iili.io/JG5ab4I.png",
+          "description": "Discover a wide range of powerful laptops for work and entertainment."
+      },
+      {
+          "id": "c2",
+          "name": "Phones",
+          "image": "https://iili.io/JG5aLhv.png",
+          "description": "Stay connected with the latest smartphones featuring cutting-edge technology."
+      },
+      {
+          "id": "c3",
+          "name": "Watches",
+          "image": "https://iili.io/JG5ap2t.png",
+          "description": "Enhance your style with our collection of stylish and functional watches."
+      },
+      {
+          "id": "c4",
+          "name": "Games",
+          "image": "https://iili.io/JG5aDEN.png",
+          "description": "Immerse yourself in thrilling gaming experiences with our selection of games."
+      },
+      {
+          "id": "c5",
+          "name": "Accessories",
+          "image": "https://iili.io/JG5aGB2.png",
+          "description": "Find the perfect accessories to complement your devices and style."
+      },
+      {
+          "id": "c6",
+          "name": "Screens",
+          "image": "https://iili.io/JG5atBp.png",
+          "description": "Upgrade your viewing experience with our high-quality screens and displays."
+      }
+  ]
+}
+
