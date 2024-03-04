@@ -134,7 +134,7 @@ if(products.length === 0) {
     <input type="text" className="border w-full border-black" placeholder="search" onChange={(event)=>{searchFilterHandler(event, data)}} />
     
     <div className="flex rounded-md w-full h-8 shadow-md border-2 border-black text-sm text-center p-1 my-4 cursor-pointer">
-    <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>clearFiltersHandler()
+    <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>priceFilterHandler(0, 1000000000, data)
       }> All</button>
       <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>priceFilterHandler(0, 100, data)}> GHS 0 - 100</button>
       <button className="border-r-2 border-black w-1/4 hover:bg-slate-200" onClick={()=> priceFilterHandler(100, 499, data)
@@ -146,14 +146,15 @@ if(products.length === 0) {
     
     
     <div className="flex rounded-md w-full h-8 shadow-md border-2 border-black text-sm text-center p-1 my-4 cursor-pointer">
-    <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>clearFiltersHandler()}> All</button>
+    <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>categoryFilterHandler('', data)}> All</button>
       <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>
         categoryFilterHandler("men's clothing", data)
       }> Men's Clothing</button>
       <button className="border-r-2 border-black w-1/4 hover:bg-slate-200" onClick={()=> categoryFilterHandler("jewelery", data)
       }>jewelery </button>
-      <button className="border-r-2  border-black w-1/4 hover:bg-slate-200"> Electronics </button>
-      <button className=" rounded-r-md border-black w-1/4 hover:bg-slate-200"> Women's Clothing </button>
+      <button className="border-r-2  border-black w-1/4 hover:bg-slate-200"
+      onClick={()=>categoryFilterHandler("electronics", data)}> Electronics </button>
+      <button className=" rounded-r-md border-black w-1/4 hover:bg-slate-200" onClick={()=>categoryFilterHandler("women's clothing", data)}> Women's Clothing </button>
       
     </div>
     {displayedProducts.length===0 && (<div>No Products found</div>)}

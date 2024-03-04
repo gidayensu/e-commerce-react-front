@@ -3,7 +3,11 @@ import {createSlice, configureStore } from '@reduxjs/toolkit';
 const highestPossiblePrice = 1000000000;
 
 const filterPrice = (data, minPrice, maxPrice) => {
+    if(maxPrice === highestPossiblePrice) {
+      return data.filter((item)=> item.price !== maxPrice)
+    } else {
    return data.filter((item)=> item.price <= maxPrice && item.price >= minPrice)
+  }
 };
 
 const filterCategory = (data, string)=> {

@@ -27,7 +27,7 @@ function LandingPage () {
                 <Link to="shop"><button className='btn btn-primary mr-5'>View All Products {<AiOutlineArrowRight/>}</button></Link>
             </section>
             
-            <Products featured={true}/>
+            <Products featured={false}/>
             
             <h1>BLOG</h1>
             <h1>BRANDS HOVER PUSH FORWARD NOT HOVERED BLACK AND WHITE PALE</h1>
