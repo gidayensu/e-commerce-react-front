@@ -1,4 +1,4 @@
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineSearch, AiOutlineMenu, AiOutlineClose    } from "react-icons/ai";
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import CartItems from "../shop/NavCart";
@@ -34,7 +34,7 @@ export default function MainNavigation() {
   return (
     <>
     
-    <nav data-theme={theme} className="bg-gray-800 sticky top-0 z-50">
+    <nav data-theme={theme} className="bg-[#0b56ad] sticky top-0 z-50">
       <div className="menu">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -48,24 +48,35 @@ export default function MainNavigation() {
               src="https://dummyimage.com/160x40"
               alt="Logo"
             />
+            {/* desktop navbar */}
             <div className="hidden sm:flex sm:ml-6 sm:space-x-8">
               <MenuItem text="Home" link="/" />
               <MenuItem text="About" link="about-us" />
               <MenuItem text="Shop" link="shop" />
               <MenuItem text="Contact Us" link="contact-us" />
+              <label htmlFor="" className="rounded-full input input-bordered flex items-center gap-2">
+                <input className="w-96 h-10 " type="text" placeholder="search" />
+                <AiOutlineSearch className="text-2xl text-slate-400"/>
+              </label>
             </div>
+            
           </div>
           <div className="flex items-center">
             {/* cart items */}
+
+
     
           <CartItems/>
 
-            <Link
+                
+              <Link
               to="account"
               className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-2xl font-medium"
             >
+              
               <AiOutlineUser />
             </Link>
+            
             <div className="hidden sm:block">{darkMode}</div>
           </div>
           <div className="flex items-center sm:hidden">
@@ -75,43 +86,20 @@ export default function MainNavigation() {
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded={isOpen}
             >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
+              {/* phone navbar  */}
+              
+              {isOpen ? <AiOutlineClose  className="text-2xl text-white" />
+               : <AiOutlineMenu className="text-2xl text-white"/>}
             </button>
+            
           </div>
+          
+          
         </div>
+        <label htmlFor="" className="md:hidden rounded-full h-8 input input-bordered flex items-center gap-2">
+                <input className="w-full  text-sm " type="text" placeholder="search products" />
+                <AiOutlineSearch className="text-2xl text-slate-400"/>
+              </label>
       </div>
 
       {isOpen && (
@@ -121,6 +109,7 @@ export default function MainNavigation() {
             <MenuItem text="About" link="about-us" />
             <MenuItem text="Shop" link="shop" />
             <MenuItem text="Contact Us" link="contact-us" />
+            
           </div>
         </div>
       )}

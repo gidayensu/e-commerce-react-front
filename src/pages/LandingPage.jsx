@@ -1,7 +1,7 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import Categories from '../components/shop/Categories.jsx';
+import Filter from "../components/shop/Filter.jsx";
 import Products from '../components/shop/Products.jsx';
 
 function LandingPage () {
@@ -51,11 +51,9 @@ function LandingPage () {
             <section>
                 <div className="flex sm:justify-between sm:mr-20 mt-8">
                 <h2 className='sm:text-3xl text-2xl font-bold mb-8 '>Browse by Category</h2>
-                <span className="flex gap-3">
-                    <button className="btn btn-primary rounded-full"><IoIosArrowBack /></button>
-                    <button className="btn btn-primary rounded-full"><IoIosArrowForward /></button>                    
-                </span>
+                
                 </div>
+                <Filter/>
                 <div className="sm:mr-16">
                 {/* <Categories/> */}
                 </div>

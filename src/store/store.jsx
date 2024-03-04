@@ -2,25 +2,38 @@ import {createSlice, configureStore } from '@reduxjs/toolkit';
 
 const highestPossiblePrice = 1000000000;
 
-const filterPrice = (data, minPrice, maxPrice) => {
-    if(maxPrice === highestPossiblePrice) {
-      return data.filter((item)=> item.price !== maxPrice)
-    } else {
-   return data.filter((item)=> item.price <= maxPrice && item.price >= minPrice)
-  }
-};
+// function countProductsByCategory(products) {
+//   const categoryCounts = {};
+//   products.forEach((product) => {
+//     const category = product.category; // Assuming each product object has a 'category' property
+//     if (categoryCounts[category]) {
+//       categoryCounts[category]++;
+//     } else {
+//       categoryCounts[category] = 1;
+//     }
+//   });
+//   return categoryCounts;
+// }
 
-const filterCategory = (data, string)=> {
-  if(string ==='') {
-    return data.filter((item)=> item.category !== string); 
-  } else {
-   return data.filter((item)=> item.category === string);}
-}
+// const filterPrice = (data, minPrice, maxPrice) => {
+//     if(maxPrice === highestPossiblePrice) {
+//       return data.filter((item)=> item.price !== maxPrice)
+//     } else {
+//    return data.filter((item)=> item.price <= maxPrice && item.price >= minPrice)
+//   }
+// };
 
-const filterSearch = (data, string)=> {
-  const regex = new RegExp(string, 'i')
-  return data.filter((item) => regex.test(item.title));
-}
+// const filterCategory = (data, string)=> {
+//   if(string ==='') {
+//     return data.filter((item)=> item.category !== string); 
+//   } else {
+//    return data.filter((item)=> item.category === string);}
+// }
+
+// const filterSearch = (data, string)=> {
+//   const regex = new RegExp(string, 'i')
+//   return data.filter((item) => regex.test(item.title));
+// }
 
 
 
@@ -99,72 +112,85 @@ const cartSlice = createSlice({
 });
 
 const initialProductFilterState = {
-products: [],
-category: '',
-minPrice: 0,
-maxPrice: highestPossiblePrice,
-searchValue: ''
-}
+  products: [],
+  category: '',
+  minPrice: 0,
+  maxPrice: highestPossiblePrice,
+  searchValue: '',
+  categoryCounts: {},
+};
 
 const productFilterSlice = createSlice({
   name: 'product',
   initialState: initialProductFilterState,
   reducers: {
+    clearFilters(state) {
+      state.products = [];
+      state.category = '';
+      state.minPrice = 0;
+      state.maxPrice = highestPossiblePrice;
+      state.categoryCounts = {};
+    },
 
-      clearFilters (state) {
-        state.products = [];
-        state.category = '';
-        state.minPrice = 0;
-        state.maxPrice = highestPossiblePrice
-      }, 
+    filterByCategory(state, action) {
+      const category = action.payload.category;
+      const data = action.payload.data;
+      state.category = category;
+      state.products = filterProducts(data, state.minPrice, state.maxPrice, category, state.searchValue);
+      state.categoryCounts = countProductsByCategory(state.products);
+    },
 
-      filterByCategory(state, action) {
-          const category = action.payload.category;
-          const data = action.payload.data;
-          state.category = category;
-          const filteredCategory = filterCategory(data, category);
-          let filteredProducts = filterPrice(filteredCategory, state.minPrice, state.maxPrice);
-          if (state.searchValue !== '') {
-            filteredProducts = filterSearch(filteredProducts, state.searchValue); 
-          }
-          state.products = filteredProducts;
+    filterByPrice(state, action) {
+      const minPrice = action.payload.minPrice;
+      const maxPrice = action.payload.maxPrice;
+      const data = action.payload.data;
+      state.minPrice = minPrice;
+      state.maxPrice = maxPrice;
+      state.products = filterProducts(data, minPrice, maxPrice, state.category, state.searchValue);
+      state.categoryCounts = countProductsByCategory(state.products);
+    },
 
-      },
+    filterBySearch(state, action) {
+      const searchValue = action.payload.eventData;
+      const data = action.payload.data;
+      state.searchValue = searchValue;
+      state.products = filterProducts(data, state.minPrice, state.maxPrice, state.category, searchValue);
+      state.categoryCounts = countProductsByCategory(state.products);
+      console.log(state.categoryCounts)
+    },
+  },
+});
 
-      filterByPrice(state, action) {
-        const minPrice = action.payload.minPrice;
-        const maxPrice = action.payload.maxPrice;
-        const data = action.payload.data;
-        state.minPrice = minPrice;
-        state.maxPrice = maxPrice;
-        const filteredPrice = filterPrice(data, minPrice, maxPrice);
-        let filteredProducts = filterCategory(filteredPrice, state.category)
-        if (state.searchValue !== '') {
-          filteredProducts = filterSearch(filteredProducts, state.searchValue); 
-        }
-        state.products = filteredProducts;
-      }, 
 
-      filterBySearch (state, action) {
-        const searchValue = action.payload.eventData;
-        const data = action.payload.data;
-        state.searchValue = searchValue;
-        let filteredSearch = filterSearch(data, searchValue);
-        if(state.maxPrice !== highestPossiblePrice) {
-          filteredSearch = filterPrice(filteredSearch, state.minPrice, state.maxPrice)
-        }
+function filterProducts(data, minPrice, maxPrice, category, searchValue) {
+  return data.filter(item => {
+    const priceInRange = maxPrice === highestPossiblePrice ? item.price !== maxPrice : item.price <= maxPrice && item.price >= minPrice;
+    const categoryMatch = category === '' ? true : item.category === category;
+    const searchMatch = searchValue === '' ? true : new RegExp(searchValue, 'i').test(item.title);
+    return priceInRange && categoryMatch && searchMatch;
+  });
+}
+
+
+function countProductsByCategory(products) {
+  const categoryCounts = {};
+  products.forEach(product => {
+    const category = product.category;
+    categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+  });
+  return categoryCounts;
+}
+
+
+// if(state.maxPrice !== highestPossiblePrice) {
+        //   filteredSearch = filterPrice(filteredSearch, state.minPrice, state.maxPrice)
+        // }
 
         
-        if(state.category!=='') {
-          filteredSearch = filterCategory(filteredSearch, state.category)
-          
-        } 
+        // if(state.category!=='') {
+        //   filteredSearch = filterCategory(filteredSearch, state.category)
+        // } 
 
-        state.products = filteredSearch;
-
-      }
-  }
-})
 const store = configureStore({
     reducer: {
         cart: cartSlice.reducer,

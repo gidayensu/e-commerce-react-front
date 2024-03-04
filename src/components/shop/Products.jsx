@@ -96,33 +96,6 @@ if(products.length === 0) {
 } else {
   displayedProducts = products;
 }
-//filters
-// const allProducts = () => {
-//   setDataToBeDisplayed(data)
-// }
-// const filterProductsBySearch = (event)=> {
-//   const regex = new RegExp(event.target.value, 'i')
-//   (data.filter((item) => regex.test(item.title)));}
-
-
-// const filterProductsByCategory = (category) => {
-//   if(dataToBeDisplayed.length !== 0) {
-//     setDataToBeDisplayed(dataToBeDisplayed.filter((item) => item.category === category))  
-//   } else {
-//   if(data){
-//   setDataToBeDisplayed(data.filter((item) => item.category === category));}
-// };
-// }
-
-// const filterProductsByPrice = (minprice, maxprice) => {
-//     if(dataToBeDisplayed.length !== 0) {
-//       setDataToBeDisplayed(dataToBeDisplayed.filter((item)=> item.price <= maxprice && item.price >= minprice)) 
-//   } else {
-  
-//   if(data) {
-//     setDataToBeDisplayed(data.filter((item)=> item.price <= maxprice && item.price >= minprice))
-//   }}
-// }
 
 
 
@@ -184,7 +157,7 @@ if(products.length === 0) {
                     <h2 className="line-clamp-2 overflow-hidden text-ellipsis text-sm ">
                       {product.title}
                     </h2>
-                    <h2 className="text-sky-800 font-bold">{`GHS ${productPrice}`}</h2>
+                    <h2 className="text-[#246fc6] font-bold">{`GHS ${productPrice}`}</h2>
                   </div>
                   <div>
                   <div className="md:flex gap-4 flex items-center justify-center absolute bottom-14 h-10 mb-4 lg:w-60 md:transition-opacity md:duration-500 md:opacity-0 md:group-hover:opacity-100">

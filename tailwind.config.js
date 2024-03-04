@@ -14,7 +14,15 @@ export default {
   plugins: [require("daisyui")],
 
   daisyui: {
-    themes: ['light'], 
+    themes: [
+    //   {
+    //   mytheme: {
+    //     primary: "#246fc6",
+    //     secondary: "#073973"
+    //   }
+    // },
+      
+      'light'], 
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
     utils: true, // adds responsive and modifier utility classes
