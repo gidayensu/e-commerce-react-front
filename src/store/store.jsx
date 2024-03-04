@@ -123,7 +123,10 @@ const productFilterSlice = createSlice({
           const data = action.payload.data;
           state.category = category;
           const filteredCategory = filterCategory(data, category);
-          const filteredProducts = filterPrice(filteredCategory, state.minPrice, state.maxPrice);
+          let filteredProducts = filterPrice(filteredCategory, state.minPrice, state.maxPrice);
+          if (state.searchValue !== '') {
+            filteredProducts = filterSearch(filteredProducts, state.searchValue); 
+          }
           state.products = filteredProducts;
 
       },
@@ -135,8 +138,10 @@ const productFilterSlice = createSlice({
         state.minPrice = minPrice;
         state.maxPrice = maxPrice;
         const filteredPrice = filterPrice(data, minPrice, maxPrice);
-        const filteredProducts = filterCategory(filteredPrice, state.category)
-        console.log(filteredProducts)
+        let filteredProducts = filterCategory(filteredPrice, state.category)
+        if (state.searchValue !== '') {
+          filteredProducts = filterSearch(filteredProducts, state.searchValue); 
+        }
         state.products = filteredProducts;
       }, 
 
@@ -149,8 +154,10 @@ const productFilterSlice = createSlice({
           filteredSearch = filterPrice(filteredSearch, state.minPrice, state.maxPrice)
         }
 
+        
         if(state.category!=='') {
-          filteredSearch = filterPrice(filteredSearch, state.category)
+          filteredSearch = filterCategory(filteredSearch, state.category)
+          
         } 
 
         state.products = filteredSearch;

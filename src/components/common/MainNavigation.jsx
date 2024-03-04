@@ -34,7 +34,7 @@ export default function MainNavigation() {
   return (
     <>
     
-    <nav data-theme={theme} className="bg-gray-800">
+    <nav data-theme={theme} className="bg-gray-800 sticky top-0 z-50">
       <div className="menu">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
