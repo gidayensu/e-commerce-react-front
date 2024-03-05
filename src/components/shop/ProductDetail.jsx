@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../store/store";
-import { Link } from "react-router-dom";
+
 function ProductDetail({ productData }) {
   const [productQuantity, setProductQuantity] = useState(1);
   const dispatch = useDispatch();
@@ -52,21 +52,29 @@ function ProductDetail({ productData }) {
               <h2 className="font-bold text-3xl md:text-4xl md:mt-0 mt-10">
                 {product.title}
               </h2>
-              <h3 className="md:text-3xl text-2xl text-sky-700 font-bold">{`GHS ${productPrice}`}</h3>
+              <h3 className="md:text-3xl text-2xl text-primary font-bold">{`GHS ${productPrice}`}</h3>
               <div className="border-t border-solid border-gray-300"></div>
               <div className="overflow-hidden text-elipsis">
               
                 <p className="">{`${product.description}`}</p>
+                <div className="rating flex mt-3 gap-1">
+                  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"  />
+                  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked/>
+                  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                  <span>(224 Verified ratings)</span>
+                </div>
               </div>
-              <div className="flex md:justify-start md:items-start  items-center gap-4 md:gap-0 flex-nowrap md:grid md:grid-cols-2">
-                <div className="flex border justify-center items-center gap-4 border-gray-400 h-12 w-32">
-                  <button onClick={incrementHandler}>+</button>
+              <div className="flex md:justify-start md:items-start  items-center gap-4 md:gap-0 flex-nowrap md:grid md:grid-cols-2 ">
+                <div className="flex justify-center items-center gap-4 border-2 border-gray-400  h-12 w-32 rounded-full">
+                  <button onClick={incrementHandler} className="hover:font-bold">+</button>
                   <p>{productQuantity}</p>
-                  <button onClick={decrementHandler}>-</button>
+                  <button className="hover:font-bold" onClick={decrementHandler}>-</button>
                 </div>
 
                 <div>
-                  <button className="bg-sky-600 hover:bg-sky-700 rounded-sm text-white h-12 w-52 md:w-96" onClick={()=>addToCartHandler(
+                  <button className="bg-primary hover:bg-sky-700 rounded-full text-white h-12 w-52 md:w-96" onClick={()=>addToCartHandler(
                     product.id, 
                     product.title, 
                     product.image,

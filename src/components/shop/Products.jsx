@@ -1,4 +1,4 @@
-import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart,  } from "react-icons/ai";
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/store.jsx";

@@ -20,32 +20,34 @@ function CartItems({drawerToggler}) {
     <main className='mt-10'>
     {items.map((item) => (
         <section className='mb-5' key={item.itemId}>
-          <div className="grid grid-cols-4 gap-1 justify-start">
+          <div className="w-full grid grid-cols-4 gap-1 justify-start">
             <div className="flex items-start">
-              <img className="w-12 h-auto" src={item.image} alt={item.name} />
+              <img className="w-16 h-auto" src={item.image} alt={item.name} />
             </div>
             <div className='col-span-3'>
             <div className="truncate">
               {item.name}
             </div>
             <div className="">
-              <div className="border-2 w-14 flex justify-between items-center">
+              <div className="w-40 flex justify-between items-center col-span-2">
                 <button
                   onClick={() => cartItemsClickHandler(item.itemId, false)}
-                  className="border-2 w-4"
+                  className=" w-4 text-2xl"
                 >
                   -
                 </button>
                 <span className="px-2">{item.quantity}</span>
                 <button
                   onClick={() => cartItemsClickHandler(item.itemId, true)}
-                  className="border-2 w-4"
+                  className="text-2xl w-4"
                 >
                   +
                 </button>
+                <p className='ml-5 font-bold'>{`GHS ${item.totalPrice}`}</p>  
               </div>
-              <p>{`GHS ${item.totalPrice}`}</p>
+              <button className='bg-gray-900 rounded-md text-[11px] text-white h-7 w-16'> remove</button>  
               </div>
+              
             </div>
           </div>
           <div></div>
@@ -63,8 +65,8 @@ function CartItems({drawerToggler}) {
         ) : (
           <div className="flex flex-col gap-3">
             <p className="font-bold text-center">{`Total: GHS ${totalPrice}`}</p>
-            <button onClick={clearCartHandler} className="p-1 border-2 hover:border-gray-950 border-gray-700 text-black font-bold">CLEAR CART</button>
-            <Link to="/shop/checkout"><button onClick={drawerToggler} className="p-1 w-full h-8 bg-sky-700 text-white font-bold">CHECKOUT</button></Link>
+            <button onClick={clearCartHandler} className="p-1 border-2 hover:border-gray-950 border-gray-700 text-black font-bold rounded-full">CLEAR CART</button>
+            <Link to="/shop/checkout"><button onClick={drawerToggler} className="p-1 w-full h-8 bg-primary text-white font-bold rounded-full">CHECKOUT</button></Link>
           </div>
         )}
       </div>
