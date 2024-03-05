@@ -138,9 +138,9 @@ if(products.length === 0) {
           const productPrice = Math.ceil(product.price);
           return (
                <div key={product.id} className="relative group">
-                <div className="lg:w-56 bg-base-100 shadow-md  h-64 cursor-pointer">
+                <div className="lg:w-56 bg-base-100 shadow-md cursor-pointer">
                   <Link to={`/shop/product/${product.id}`}>
-                  <figure className="flex justify-center items-center h-40">
+                  <figure className="flex justify-center items-center h-32">
                     {!product.image && (
                       <span className="loading loading-ring loading-lg"></span>
                     )}
@@ -172,7 +172,7 @@ if(products.length === 0) {
                       }
                       className="bg-white text-2xl"
                     >
-                      <span className="block">
+                      <span className="hidden md:block">
                         <AiOutlineShoppingCart />
                       </span>
                                         </button>

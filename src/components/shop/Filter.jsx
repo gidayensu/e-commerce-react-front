@@ -1,4 +1,4 @@
-import { IoMdOptions } from "react-icons/io";
+import { IoMdOptions, IoIosArrowDown } from "react-icons/io";
 
 function Filter () {
     return(
@@ -17,15 +17,25 @@ function Filter () {
     <button  className="btn btn-sm btn-primary btn-circle btn-ghost absolute right-2 top-2">✕</button>
       {/* Sidebar content here */}
       <div className="flex flex-col gap-4">
-       <span>CATEGORIES</span>
-            <div className="flex flex-col gap-1">
+      <span className="font-bold">SORT</span>
+        <div>
+            <div className="dropdown dropdown-bottom">
+                <div tabIndex={0} role="button" className="btn font-light bg-white w-56 text-left">Sort by name [A-Z] <IoIosArrowDown /></div>
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><button>Expensive First</button></li>
+                        <li><button>Cheapest First</button></li>
+                        <li><button>Name [Z-A]</button></li>
+                     </ul>
+                </div>
+        </div>
+       <span className="font-bold">CATEGORIES</span>
+            <div className="flex flex-col gap-1 cursor-pointer">
                 <span className="-ml-4 w-80 shadow-sm bg-white h-9 flex items-center"><p className="ml-3">Men's Clothing (4)</p></span>
-                <span className="-ml-4 w-80 shadow-sm active active:bg-primary bg-white h-9 flex items-center"><p className="ml-3">Women's Clothing (4)</p></span>
-                <span> (4)</span>
-                <span>Electronics (4)</span>
-                <span>Jewelery (4)</span>
+                <span className="-ml-4 w-80 shadow-sm active active:text-white active:bg-primary bg-white h-9 flex items-center"><p className="ml-3">Women's Clothing (4)</p></span>
+                <span className="-ml-4 w-80 shadow-sm active active:text-white active:bg-primary bg-white h-9 flex items-center"><p className="ml-3">Electronics (4)</p></span>
+                <span className="-ml-4 w-80 shadow-sm active active:text-white active:bg-primary bg-white h-9 flex items-center"><p className="ml-3">Jewelery (4)</p></span>
             </div>
-        <span className="mt-5">PRICE RANGE</span>
+        <span className="mt-5 font-bold">PRICE RANGE</span>
         <div className="flex gap-3 items-center">
             <span className="grid">
                 <label htmlFor="" className="text-[11px]"> Minimum Price</label>
