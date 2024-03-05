@@ -104,7 +104,7 @@ if(products.length === 0) {
     <>
     
     
-    <input type="text" className="border w-full border-black" placeholder="search" onChange={(event)=>{searchFilterHandler(event, data)}} />
+    {/* <input type="text" className="border w-full border-black" placeholder="search" onChange={(event)=>{searchFilterHandler(event, data)}} />
     
     <div className="flex rounded-md w-full h-8 shadow-md border-2 border-black text-sm text-center p-1 my-4 cursor-pointer">
     <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>priceFilterHandler(0, 1000000000, data)
@@ -130,6 +130,7 @@ if(products.length === 0) {
       <button className=" rounded-r-md border-black w-1/4 hover:bg-slate-200" onClick={()=>categoryFilterHandler("women's clothing", data)}> Women's Clothing </button>
       
     </div>
+     */}
     {displayedProducts.length===0 && (<div>No Products found</div>)}
      <main className="grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-3 gap-4 grid-cols-2">
       
@@ -138,7 +139,10 @@ if(products.length === 0) {
           const productPrice = Math.ceil(product.price);
           return (
                <div key={product.id} className="relative group">
-                <div className="lg:w-56 bg-base-100 shadow-md cursor-pointer">
+                <div className="lg:w-56 bg-base-100 shadow-md  cursor-pointer">
+                  <div className="flex items-center justify-center text-center text-[11px] absolute bg-amber-100 rounded-sm w-10 mt-2 h-4 right-1">
+                      <p>25%</p>
+                  </div>
                   <Link to={`/shop/product/${product.id}`}>
                   <figure className="flex justify-center items-center h-32">
                     {!product.image && (
