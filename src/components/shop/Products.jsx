@@ -144,7 +144,7 @@ if(products.length === 0) {
           return (
                <div key={product.id} className="relative group">
                 <div className="lg:w-56 bg-base-100 shadow-md rounded-lg cursor-pointer">
-                  <div className="flex items-center justify-center text-center text-[11px] absolute bg-amber-100 rounded-sm w-10 mt-2 h-4 right-1">
+                  <div className="flex items-center justify-center text-center text-[11px] absolute bg-amber-200 rounded-sm w-10 mt-2 h-4 right-1">
                       <p>{`${product.discountPercentage}%`}</p>
                   </div>
                   <Link to={`/shop/product/${product.id}`}>

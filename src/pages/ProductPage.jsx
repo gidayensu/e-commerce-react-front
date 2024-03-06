@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-
+import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
 import { Link } from "react-router-dom";
 import ProductDetail from "../components/shop/ProductDetail.jsx";
 import { useQuery } from "@tanstack/react-query";
@@ -37,7 +37,7 @@ function ProductPage() {
 
   return (
     <>
-     
+      <Breadcrumbs/>
       <ProductDetail productData={data} />
       <h2 className="font-semibold m-5 md:text-center md:mb-10">Recommended Products</h2>
       <div className="md:mx-32">
