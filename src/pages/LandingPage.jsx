@@ -1,8 +1,8 @@
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Filter from "../components/shop/Filter.jsx";
-import Products from '../components/shop/Products.jsx';
+import Products from "../components/shop/Products.jsx";
+import Categories from "../components/shop/categories/Categories.jsx";
 
 function LandingPage () {
   
@@ -49,9 +49,11 @@ function LandingPage () {
         <div className="md:mr-44 md:ml-44 mr-8 ml-8 md:mt-10">
 
             <section>
-                <div className="flex sm:justify-between sm:mr-20 mt-8">
-                <h2 className='sm:text-3xl text-2xl font-bold mb-8 '>Browse by Category</h2>
-                
+                <div className="flex flex-col sm:justify-between sm:mr-20 mt-8">
+                <h2 className="md:text-2xl font-bold mb-8 ">Product Categories</h2>
+
+                <Categories />
+                    
                 </div>
                 <Filter/>
                 <div className="sm:mr-16">
@@ -62,13 +64,13 @@ function LandingPage () {
                 <span className="flex items-center gap-1">
                 <div className="w-5 h-5 rounded-full bg-primary"></div>
                 <div className="w-5 h-5 absolute rounded-full bg-primary animate-ping"></div>
-                <h2 className='text-2xl font-bold'>Featured Products</h2>
+                <h2 className="text-2xl font-bold">Featured Products</h2>
                 </span>
-                <Link to="shop"><button className='btn btn-primary mr-5 hidden md:block'>View All Products {<AiOutlineArrowRight/>}</button></Link>
+                <Link to="shop"><button className="btn btn-primary mr-5 hidden md:block">View All Products </button></Link>
             </section>
             
-            <Products featured={false}/>
-            <Link to="shop"><button className='btn btn-primary w-full mr-5 block md:hidden mt-5'>View All Products </button></Link>
+            <Products source={"featured"}/>
+            <Link to="shop"><button className="btn btn-primary w-full mr-5 block md:hidden mt-5">View All Products </button></Link>
             
             <div className="flex items-center mt-5">
         <div className="h-[1px] w-full bg-gray-500"></div>

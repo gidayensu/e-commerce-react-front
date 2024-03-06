@@ -65,7 +65,8 @@ function CartItems({drawerToggler}) {
         ) : (
           <div className="flex flex-col gap-3">
             <p className="font-bold text-center">{`Total: GHS ${totalPrice}`}</p>
-            <button onClick={clearCartHandler} className="p-1 border-2 hover:border-gray-950 border-gray-700 text-black font-bold rounded-full">CLEAR CART</button>
+            <button onClick={clearCartHandler} className="p-1 border-2 hover:border-gray-950 border-gray-700 text-black font-bold rounded-full">VIEW CART</button>
+            
             <Link to="/shop/checkout"><button onClick={drawerToggler} className="p-1 w-full h-8 bg-primary text-white font-bold rounded-full">CHECKOUT</button></Link>
           </div>
         )}

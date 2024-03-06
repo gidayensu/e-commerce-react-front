@@ -20,7 +20,7 @@ function ProductPage() {
   if (isLoading) {
     return(
     <div className="flex justify-center mt-20 mb-20">
-    <ShopLoader number={2} />;
+    <ShopLoader number={1}/>;
     </div>)
   }
 
@@ -39,8 +39,10 @@ function ProductPage() {
     <>
      
       <ProductDetail productData={data} />
-      <h2 className="font-bold text-2xl m-5 md:text-center md:mb-10">Recommended Products</h2>
-      <ProductCarousel featured={true}  />
+      <h2 className="font-semibold m-5 md:text-center md:mb-10">Recommended Products</h2>
+      <div className="md:mx-32">
+      <ProductCarousel source={"featured"}/>
+      </div>
     </>
   )
 }

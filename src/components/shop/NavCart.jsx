@@ -36,7 +36,11 @@ function Cart() {
   {drawerOpen && <div className="drawer-side">
     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay "></label>
     <ul className="menu p-4 w-80 min-h-full text-base-content bg-white">
-         <h2 className="font-bold text-1xl">YOUR CART</h2>
+         <span className="font-bold text-1xl flex justify-between mr-5">
+          <p>YOUR CART</p>
+          <button>(clear cart)</button>
+          </span>
+
          <button onClick = {drawerToggler} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
          <NavCartItems drawerToggler={drawerToggler}/>
     </ul>

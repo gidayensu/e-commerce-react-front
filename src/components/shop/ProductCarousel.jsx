@@ -8,14 +8,15 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 
-function ProductCarousel({ featured }) {
+function ProductCarousel({ source }) {
   const { productId } = useParams();
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => fetchProducts({ featured }),
+  const  { data, isPending, error,} = useQuery({
+    queryKey: ['products'],
+    queryFn: ()=> fetchProducts({source})
   });
 
-  if (isLoading) {
+
+  if (isPending) {
     return (
       <div className="flex justify-center mt-20 mb-20">
         <ShopLoader number={2} />
@@ -31,7 +32,8 @@ function ProductCarousel({ featured }) {
     );
   }
 
-  const recommendedProducts = data.filter((product) => product.id != productId);
+  
+  const recommendedProducts = data.products.filter((product) => product.id != productId);
 
   return (
     <>
