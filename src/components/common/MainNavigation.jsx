@@ -17,11 +17,11 @@ export default function MainNavigation() {
 
   const toggleTheme = () => {
     if(theme=== 'light') {
-      console.log('set theme dark')
+      
       setTheme('dark')
     } else {
       setTheme('light')
-      console.log('set theme light')
+      
     }
   }
 

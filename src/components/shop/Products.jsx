@@ -1,14 +1,14 @@
 import { AiOutlineHeart, AiOutlineShoppingCart,  } from "react-icons/ai";
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../store/store.jsx";
+import { addItem } from "../../store/cartSlice.jsx";
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchProducts } from "../../util/http.js";
 import ShopLoader from './ShopLoader.jsx';
 import Error from '../common/Error.jsx';
-import { clearFilters, filterByCategory, filterByPrice, filterBySearch} from "../../store/store.jsx";
+import { clearFilters, filterByCategory, filterByPrice, filterBySearch} from "../../store/productFilterSlice.jsx";
 
 
 function Products({ source }) {
@@ -89,7 +89,7 @@ function Products({ source }) {
     return <Error title={'Failed to load products'} message={error.info?.message || 'Failed to load products data, please try again'}/>;
 }
 
-console.log(data)
+
 
 //setting products to be displayed
 let displayedProducts = []
@@ -104,47 +104,18 @@ if(products.length === 0) {
 
   return (
     <>
-    
-    
-    {/* <input type="text" className="border w-full border-black" placeholder="search" onChange={(event)=>{searchFilterHandler(event, data)}} />
-    
-    <div className="flex rounded-md w-full h-8 shadow-md border-2 border-black text-sm text-center p-1 my-4 cursor-pointer">
-    <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>priceFilterHandler(0, 1000000000, data)
-      }> All</button>
-      <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>priceFilterHandler(0, 100, data)}> GHS 0 - 100</button>
-      <button className="border-r-2 border-black w-1/4 hover:bg-slate-200" onClick={()=> priceFilterHandler(100, 499, data)
-      }>GHS 100 - 499 </button>
-      <button className="border-r-2  border-black w-1/4 hover:bg-slate-200" onClick={()=>priceFilterHandler(500, 1000, data)}> GHS 500 - GHS 1000 </button>
-      <button className=" rounded-r-md border-black w-1/4 hover:bg-slate-200" onClick={()=>priceFilterHandler(10001, 1000000, data)}> GHS 1001+ </button>
-      
-    </div>
-    
-    
-    <div className="flex rounded-md w-full h-8 shadow-md border-2 border-black text-sm text-center p-1 my-4 cursor-pointer">
-    <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>categoryFilterHandler('', data)}> All</button>
-      <button  className="border-r-2 rounded-l-md border-black w-1/4 hover:bg-slate-200" onClick={()=>
-        categoryFilterHandler("men's clothing", data)
-      }> Men's Clothing</button>
-      <button className="border-r-2 border-black w-1/4 hover:bg-slate-200" onClick={()=> categoryFilterHandler("jewelery", data)
-      }>jewelery </button>
-      <button className="border-r-2  border-black w-1/4 hover:bg-slate-200"
-      onClick={()=>categoryFilterHandler("electronics", data)}> Electronics </button>
-      <button className=" rounded-r-md border-black w-1/4 hover:bg-slate-200" onClick={()=>categoryFilterHandler("women's clothing", data)}> Women's Clothing </button>
-      
-    </div>
-     */}
     {displayedProducts.length===0 && (<div>No Products found</div>)}
-     <main className="grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-3 gap-4 grid-cols-2">
+     <main className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 gap-4 grid-cols-2">
       
 
         {displayedProducts.map((product) => {
           
           const productPrice = Math.ceil(product.price);
-          const discountedPrice = productPrice - productPrice * (product.discountPercentage / 100)
+          const discountedPrice = Math.floor(productPrice - productPrice * (product.discountPercentage / 100))
           return (
-               <div key={product.id} className="relative group">
-                <div className="lg:w-56 bg-base-100 shadow-md rounded-lg cursor-pointer">
-                  <div className="flex items-center justify-center text-center text-[11px] absolute bg-amber-200 rounded-sm w-10 mt-2 h-4 right-1">
+               <div key={product.id} className="relative group md:mb-4">
+                <div className="lg:w-56 bg-base-100 shadow-md rounded-lg cursor-pointer  md:h-52">
+                  <div className="flex items-center justify-center text-center text-[11px] absolute bg-amber-200 font-semibold rounded-sm w-10 mt-2 h-4 md:right-16 right-1">
                       <p>{`${product.discountPercentage}%`}</p>
                   </div>
                   <Link to={`/shop/product/${product.id}`}>

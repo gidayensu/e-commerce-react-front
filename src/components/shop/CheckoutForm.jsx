@@ -19,8 +19,8 @@ function CheckoutForm () {
       setCountry(selectedCountry);
     }
 
-    const mdClass = "md:grid md:grid-cols-2 md:gap-6";
-    const mdInputWidth = "md:w-32"
+    const mdClass = "md:grid md:grid-cols-2 md:gap-6 md:w-96";
+    
     return (
       <div className="flex flex-col md:grid md:grid-cols-2 ">
         
@@ -28,7 +28,7 @@ function CheckoutForm () {
         <div>
           <h1 className='font-bold text-2xl mb-4'>Shipping Details</h1>
             <div className={mdClass}>
-        <label className="form-control w-full max-w-xs">
+        <label className="form-control w- max-w-xs">
             <div className="label">
               <span className="label-text">First Name<span className="font-bold text-red-600">*</span></span>
             </div>
@@ -36,6 +36,7 @@ function CheckoutForm () {
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
+              required
             />
           </label>
           <label className="form-control w-full max-w-xs">
@@ -122,7 +123,7 @@ function CheckoutForm () {
               
             />
           </label>
-          <button className='btn mt-10 btn-primary w-80'>Checkout</button>
+          <button className='btn mt-10 btn-primary w-64 md:w-96'>Checkout</button>
             </div>
           </div>
           

@@ -16,7 +16,7 @@ export const useQueryProcessor = ()=> {
       if (error) {
         return error;
       }
-      console.log('this is data', data)
+      
     return {data}
     
   }

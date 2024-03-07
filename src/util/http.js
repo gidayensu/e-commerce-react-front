@@ -3,24 +3,19 @@ import { QueryClient } from "@tanstack/react-query";
 export const queryClient = new QueryClient();
 
 export async function fetchProducts({ source }) {
-  console.log('this is source', source)
-
-
+ 
+  let url = `https://dummyjson.com/products?limit=0`
   
-  let url = "https://dummyjson.com/products?limit=0";
-  
-
-  if (source === "featured") {
+if (source) {
+  if (source==="featured") {
 
     url = "https://dummyjson.com/products?limit=8&skip=10"
-    
-  }  
-  console.log(url)
-
-  if (source === "categories") {
+  } else if (source === "categories") {
     url = "https://dummyjson.com/products/categories"
+  } else {
+    url = `https://dummyjson.com/products/category/${source}`
   }
-
+  }
   
   
   const response = await fetch(url);
@@ -36,7 +31,10 @@ export async function fetchProducts({ source }) {
   }
 }
 
+
+
 export async function fetchProduct({productId}) {
+  
   const response = await fetch("https://dummyjson.com/products/" + productId);
   
   if (!response.ok) {

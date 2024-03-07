@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../store/store";
+import { addItem } from "../../store/cartSlice.jsx";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -30,11 +30,11 @@ function ProductDetail({ productData }) {
     <>
       {productData.map((product) => {
         const productPrice = Math.ceil(product.price)
-        const discountedPrice = (productPrice - productPrice * (product.discountPercentage / 100)).toFixed(2)
+        const discountedPrice = Math.floor(productPrice - productPrice * (product.discountPercentage / 100))
 
         return (
           <main key={product.id} className="flex flex-col m-6 md:m-0 md:grid md:grid-cols-2 md:mt-16 md:mb-36 mt-6 mb-6 gap-9">
-            <div className="flex justify-center items-center md:ml-64 md:w-1/2 md:border border-slate-300 rounded-3xl">
+            <div className="flex justify-center items-center xl:ml-64 md:ml-44 md:w-1/2 md:border border-slate-300 rounded-3xl">
               <Swiper
                 cssMode={true}
                 spaceBetween={10}
@@ -85,7 +85,7 @@ function ProductDetail({ productData }) {
                   <button onClick={decrementHandler} className="hover:font-bold">-</button>
                 </div>
                 <div>
-                  <button className="bg-primary hover:bg-sky-700 rounded-full text-white h-12 w-52 md:w- md:-ml-28" onClick={() => addToCartHandler(product.id, product.title, product.thumbnail, discountedPrice, productQuantity)}>ADD TO CART</button>
+                  <button className="bg-primary hover:bg-sky-700 rounded-full text-white h-12 w-52 md:w- xl:-ml-28 md:-ml-16" onClick={() => addToCartHandler(product.id, product.title, product.thumbnail, discountedPrice, productQuantity)}>ADD TO CART</button>
                 </div>
               </div>
             </div>

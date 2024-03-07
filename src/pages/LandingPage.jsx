@@ -1,6 +1,6 @@
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import Filter from "../components/shop/Filter.jsx";
+
 import Products from "../components/shop/Products.jsx";
 import Categories from "../components/shop/categories/Categories.jsx";
 
@@ -55,7 +55,7 @@ function LandingPage () {
                 <Categories />
                     
                 </div>
-                <Filter/>
+                
                 <div className="sm:mr-16">
                 {/* <Categories/> */}
                 </div>

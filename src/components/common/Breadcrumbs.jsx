@@ -5,21 +5,19 @@ function Breadcrumbs() {
     const {pathname} = location;
     const segments = pathname.split('/');
     let url = '/';
-    const breadcrumbs = segments.map((segment, index)=> {
-        
-        if (segment!==''){
-            if (segment==segments[1]){
-            url+= `${segment}`} else {
-                url+= `/${segment}`
-            }
-        return(
-          <li>
-        <Link key={index} to={url}>{segment}</Link>
-        </li>  
-        );}
-    })
 
-    console.log(breadcrumbs)
+    const filteredSegments = segments.filter(segment=>segment !== "");
+    
+    const breadcrumbs = filteredSegments.map((segment, index) => {
+        segment == segments[1] ? url += segment : url += `/${segment}`;
+        return (
+          <li key={index}>
+            <Link to={url}>{segment}</Link>
+          </li>
+        );
+      
+    });
+
   return (
     <div className="text-sm breadcrumbs ml-5 mt-2">
       <ul>

@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, addItem  } from "../../store/store.jsx";
+import { removeItem, addItem  } from "../../store/cartSlice.jsx";
+import { BsTrash3Fill } from "react-icons/bs";
 
 function OrderDetails () {
   const { items, totalPrice } = useSelector((state) => state.cart);
@@ -18,40 +19,42 @@ function OrderDetails () {
     
     };
 
-
+const calculationClass = "grid grid-rows-3 w-72 gap-1 font-bold";
     
     return (
         <div>
-        {/* <h1 className="font-bold text-2xl">{items.length > 1 ? "Products" : "Product"}</h1> */}
+        <p className="font-bold mb-2 text-2xl">Order Details</p>
         {
             items.map(item=>{
                 return(
                 <div>
-                <div className="grid grid-cols-3 w-80">
-                    <div className="h-20">
-                    <img className="h-20"  src={item.image} alt={item.name} />
+                <div className="flex gap-4 w-72 border p-4 rounded-lg mb-5 bg-gray-50 border-gray-300">
+                    <img className="h-14 md:h-16"  src={item.image} alt={item.name} />
+                    <div className="col-span-2 w-32 flex flex-col  items-start">
+                        <p className="text-sm line-clamp-2">{item.name}</p>
+                        <span className="font-bold text-left">{`GHS ${item.totalPrice}`}</span>
                     </div>
-                    <div>
-                        <p className="-ml-8">{item.name}</p>
-                    </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 ">
                         
-                        <div className="border-2 w-14 flex justify-between items-center">
+                        <div className=" w-14 flex justify-between items-center">
                 <button
                   onClick={() => cartItemsClickHandler(item.itemId, false)}
-                  className="border-2 w-4"
+                  className="text-2xl hover:font-bold w-4"
                 >
                   -
                 </button>
                 <span className="px-2">{item.quantity}</span>
                 <button
                   onClick={() => cartItemsClickHandler(item.itemId, true)}
-                  className="border-2 w-4"
+                  className="text-2xl hover:font-bold w-4"
                 >
                   +
                 </button>
               </div>
-              <span className="font-bold">{`GHS ${item.totalPrice}`}</span>
+              <BsTrash3Fill/>
+              <div>
+                
+              </div>
                     </div>
                     
                 </div>
@@ -63,17 +66,19 @@ function OrderDetails () {
         
         
         }
-        <div className="flex font-bold justify-between">
+        <div className={calculationClass}>
+        <div className="flex justify-between">
                     <span>Sub-total:</span>
-                    <span className="text-sky-700">{`GHS ${totalPrice}`}</span>
+                    <span className="text-primary">{`GHS ${totalPrice}`}</span>
         </div>
-        <div className="flex font-bold justify-between">
+        <div className="flex justify-between">
                     <span>Shipping (Flat Rate):</span>
-                    <span className="text-sky-700">{`GHS ${shippingRate}`}</span>
-        </div>
-        <div className="flex font-bold justify-between">
+                    <span className="text-primary">{`GHS ${shippingRate}`}</span>
+        </div >
+        <div className="flex justify-between">
                     <span>Total Price:</span>
-                    <span className="text-sky-700">{`GHS ${totalPrice + shippingRate}`}</span>
+                    <span className="text-primary">{`GHS ${totalPrice + shippingRate}`}</span>
+        </div>
         </div>
     </div>
     );

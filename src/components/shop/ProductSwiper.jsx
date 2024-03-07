@@ -18,7 +18,7 @@ function ProductSwiper({ products }) {
 
   // Shuffling the data array
   const shuffledProducts = shuffleProducts(products);
-  console.log(shuffledProducts);
+  
 
   const screenWidth = window.innerWidth;
   

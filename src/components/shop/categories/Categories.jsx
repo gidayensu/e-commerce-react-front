@@ -9,18 +9,16 @@ import { Grid, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 
-function Categories( ) {
-
-    
-    const source = "categories";
-
+function Categories( ) {    
+  const source = 'categories'
     const {data, isPending, error} =  useQuery({
+                
         queryKey: ['categories'],
         queryFn: ()=> fetchProducts({source})
       });
 
       if (isPending) {
-        return "...Loading"
+        return <span className="loading loading-ring loading-md"></span>
       }
 
       if (error) {

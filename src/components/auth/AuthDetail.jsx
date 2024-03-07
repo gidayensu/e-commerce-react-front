@@ -15,10 +15,12 @@ function AuthDetail({signUpRequested}) {
       
       {/* Large screens */}
         <div className="hidden sm:grid grid-cols-2 gap-4  ">
-          <button className=" flex p-4 btn btn-neutral bg-gray-300 hover:text-gray-50 text-gray-800"> 
-          <AiFillGoogleCircle />
-          {signUpRequested ? 'Sign up with Google' : 'Log in with Google'}
-          </button>
+          <span className='flex items-center justify-center btn btn-neutral bg-gray-300 hover:text-gray-50 text-gray-800'>
+            
+            <AiFillGoogleCircle className='text-2xl '/>
+            <p>{signUpRequested ? 'Sign up with Google' : 'Log in with Google'}</p>
+          
+          </span>
           <button className="p-4 btn btn-neutral bg-gray-300 hover:text-gray-50 text-gray-800"> 
           <AiFillFacebook />
           {signUpRequested ? 'Sign up with Facebook' : 'Log in with Facebook'}
@@ -48,7 +50,7 @@ function AuthDetail({signUpRequested}) {
             Don't have an Account? <br/> <Link to='/account/signup' relative='path' className='text-blue-600'>REGISTER</Link>
             </p>}
           
-            {signUpRequested && <p className='text-center mt-4'>
+            {signUpRequested && <p className='text-center mt`-4'>
             Already have an account? <br/> <Link to='/account/login' className='text-blue-600'>LOGIN</Link>
             </p>}
         </div>
