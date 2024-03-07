@@ -1,4 +1,5 @@
-import { BiSortAlt2 } from "react-icons/bi";
+import SortBase from '../components/shop/filterAndSort/SortBase.jsx';
+import MobileFilter from '../components/shop/filterAndSort/MobileFilter.jsx'
 import Breadcrumbs from '../components/common/Breadcrumbs.jsx';
 import SideBarFilter from '../components/shop/filterAndSort/SideBarFilter.jsx';
 import Products from '../components/shop/Products.jsx';
@@ -20,7 +21,15 @@ function ShopPage () {
             <div className="w-full h-[1px] bg-gray-300 mb-3"></div>
 
             <section className='md:grid md:grid-cols-4'>
-                <div className='md:block hidden'>
+                <div className="md:hidden flex gap-32 mb-3">
+                    
+                    <MobileFilter/>
+                    <SortBase/>
+                </div>
+                <div className='hidden md:flex md:flex-col gap-3'>
+                <span className="font-bold">SORT</span>
+                    <SortBase/>
+                <span className="font-bold">CATEGORIES</span>
                     <SideBarFilter/>
                 </div>
                 <div className='col-span-3'>

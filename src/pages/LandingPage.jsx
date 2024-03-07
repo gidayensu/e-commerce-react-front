@@ -1,6 +1,5 @@
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import FeaturedProduct from "../components/shop/products/FeaturedProduct.jsx";
 import Products from "../components/shop/Products.jsx";
 import Categories from "../components/shop/categories/Categories.jsx";
 
@@ -12,7 +11,6 @@ function LandingPage () {
        
 <div className="carousel w-full h-64 md:h-[550px]">
     <div id="slide1" className="carousel-item relative w-full">
-        <button className="absolute">sdfsf</button>
         <img className="object-cover h-full w-full" src="https://raw.githubusercontent.com/thurdeon/GuessGames/master/daniel-romero-6V5vTuoeCZg-unsplash.jpg" />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide4" className="btn btn-circle">❮</a> 
@@ -68,10 +66,56 @@ function LandingPage () {
                 </span>
                 <Link to="shop"><button className="btn btn-primary mr-5 hidden md:block">View All Products </button></Link>
             </section>
-            
-            <Products source={"featured"}/>
+            <div className="flex flex-col md:grid md:grid-cols-4">
+                
+                {/* main featured product */}
+                <div>
+                    
+                            <FeaturedProduct productId={6} />
+                    
+                </div>
+                {/* featured products */}
+                <div className="col-span-3">
+                    <Products source={"featured"}/>
+                </div>
+            </div>
             <Link to="shop"><button className="btn btn-primary w-full mr-5 block md:hidden mt-5">View All Products </button></Link>
             
+            <section>
+            <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
+            <div>
+            <div className="join join-vertical w-full">
+  <div class="collapse collapse-arrow join-item border border-base-300">
+    <input type="checkbox" id="accordion1" class="collapse-open" />
+    <div class="collapse-title text-xl font-medium">
+      How can I track my order?
+    </div>
+    <div class="collapse-content"> 
+      <p><strong>You can track your order by:</strong> logging into your account and checking your order history, using the tracking number provided in your shipping confirmation email, or contacting our customer support team for assistance.</p>
+    </div>
+  </div>
+  <div class="collapse collapse-arrow join-item border border-base-300">
+    <input type="checkbox" id="accordion2" class="collapse-open" />
+    <div class="collapse-title text-xl font-medium">
+      What is your return policy?
+    </div>
+    <div class="collapse-content"> 
+      <p><strong>Our return policy:</strong> We offer a 30-day return policy for most items. Items must be returned in their original condition with all tags attached. Please refer to our Returns & Exchanges page for detailed instructions.</p>
+    </div>
+  </div>
+  <div class="collapse collapse-arrow join-item border border-base-300">
+    <input type="checkbox" id="accordion3" class="collapse-open" />
+    <div class="collapse-title text-xl font-medium">
+      Do you offer international shipping?
+    </div>
+    <div class="collapse-content"> 
+      <p><strong>Yes, we offer international shipping!</strong> International shipping rates and delivery times may vary depending on the destination. Please proceed to checkout for more information.</p>
+    </div>
+  </div>
+</div>
+
+            </div>
+            </section>
             <div className="flex items-center mt-5">
         <div className="h-[1px] w-full bg-gray-500"></div>
       <span className="mx-4 text-black text-sm tracking-widest">PARTNERS</span>

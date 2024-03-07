@@ -1,14 +1,15 @@
-import { IoMdOptions, IoIosArrowDown } from "react-icons/io";
+
 function FilterBase () {
+    const filterClass = "-ml-4 md:-ml-0 w-80 md:w-60 shadow-sm bg-white h-9 flex items-center";
     return(
         <div className="flex flex-col gap-4">
                            
-                            <span className="font-bold">CATEGORIES</span>
+                            
                             <div className="flex flex-col gap-1 cursor-pointer">
-                                <span className="-ml-4 w-80 shadow-sm bg-white h-9 flex items-center"><p className="ml-3">Men's Clothing (4)</p></span>
-                                <span className="-ml-4 w-80 shadow-sm active active:text-white active:bg-primary bg-white h-9 flex items-center"><p className="ml-3">Women's Clothing (4)</p></span>
-                                <span className="-ml-4 w-80 shadow-sm active active:text-white active:bg-primary bg-white h-9 flex items-center"><p className="ml-3">Electronics (4)</p></span>
-                                <span className="-ml-4 w-80 shadow-sm active active:text-white active:bg-primary bg-white h-9 flex items-center"><p className="ml-3">Jewelry (4)</p></span>
+                                <span className={filterClass}><p className="ml-3">Men's Clothing (4)</p></span>
+                                <span className={filterClass}><p className="ml-3">Women's Clothing (4)</p></span>
+                                <span className={filterClass}><p className="ml-3">Electronics (4)</p></span>
+                                <span className={filterClass}><p className="ml-3">Jewelry (4)</p></span>
                             </div>
                             <span className="mt-5 font-bold">PRICE RANGE</span>
                             <div className="flex gap-3 items-center">
