@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 function CategoryUI({ categoryName, imageUrl }) {
     let numberOfProducts = 0;
     
-  if(categoryName){
+  
     const source = categoryName;
   const {data, isPending, error} = useQuery({
     queryKey: ['categoryCounts'],
@@ -18,9 +18,9 @@ function CategoryUI({ categoryName, imageUrl }) {
   if (error) {
     return {message: error}
   }
-  console.log(data)
+  
   numberOfProducts = data.products.length
-}
+
   
 
   return (
