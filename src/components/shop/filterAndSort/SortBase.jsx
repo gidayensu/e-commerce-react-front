@@ -18,13 +18,13 @@ function SortBase () {
             <div 
                 tabIndex={0} 
                 role="button" 
-                className="md:btn font-light md:bg-white md:w-56 w-80 text-left md:flex md:items-center md:justify-start flex items-center"
+                className=" font-light md:w-56 w-80 text-left md:flex md:items-center md:justify-start flex items-center"
                 onClick={() => setDropdownOpen(!dropdownOpen)} 
             >
                 <BiSortAlt2 className="text-2xl"/> {selectedSort} <IoIosArrowDown/>
             </div>
             {dropdownOpen && ( 
-                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow md:bg-base-100 rounded-box w-52">
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 rounded-box w-52">
                     <li><button onClick={() => selectedSortHandler('Expensive First')}>Expensive First</button></li>
                     <li><button onClick={() => selectedSortHandler('Cheapest First')}>Cheapest First</button></li>
                     <li><button onClick={() => selectedSortHandler('Name [A-Z]')}>Name [A-Z]</button></li>

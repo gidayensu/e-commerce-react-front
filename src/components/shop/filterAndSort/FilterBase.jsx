@@ -1,6 +1,6 @@
 
 function FilterBase () {
-    const filterClass = "-ml-4 md:-ml-0 w-80 md:w-60 shadow-sm bg-white h-9 flex items-center";
+    const filterClass = "-ml-4 md:-ml-0 w-80 md:w-60 h-9 flex items-center";
     return(
         <div className="flex flex-col gap-4">
                            
