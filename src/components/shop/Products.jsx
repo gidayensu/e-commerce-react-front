@@ -1,28 +1,19 @@
-import { AiOutlineHeart, AiOutlineShoppingCart,  } from "react-icons/ai";
-import ProductsUI from "./products/ProductsUI.jsx";
-import { useQuery } from '@tanstack/react-query';
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { addItem } from "../../store/cartSlice.jsx";
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+
 import 'react-toastify/dist/ReactToastify.css';
-import { fetchProducts } from "../../util/http.js";
-import ShopLoader from './ShopLoader.jsx';
-import Error from '../common/Error.jsx';
+
 import { clearFilters, filterByCategory, filterByPrice, filterBySearch} from "../../store/productFilterSlice.jsx";
 
+import PaginatedProducts from "./products/PaginatedProducts.jsx";
 
 function Products({ source }) {
-  
-  
 
-  //using products from redux state
-  const { products } = useSelector((state)=>state.filter)
 
-  //add to cart handler
 
-  const dispatch = useDispatch();
-  
+  const { products } = useSelector((state)=>state.products);
+
   const addToCartHandler = (id, title, price, image) => {
       dispatch(
       addItem({
@@ -71,42 +62,17 @@ function Products({ source }) {
   }
 
 //fetching data
-  const  { data, isPending, error,} = useQuery({
-    queryKey: ['products'],
-    queryFn: ()=> fetchProducts({source})
-  });
-
   
-  
-  if (isPending) {
-    if (source) {
-      return <ShopLoader number={8} />;
-    } else {
-      return <ShopLoader number={20} />;
-    }
-  }
-
-  
-  if (error) {
-    return <Error title={'Failed to load products'} message={error.info?.message || 'Failed to load products data, please try again'}/>;
-}
-
-
 
 //setting products to be displayed
-let displayedProducts = []
-if(products.length === 0) {
-  displayedProducts = data.products;
-} else {
-  displayedProducts = products;
-}
+
 
 
 
 
   return (
     
-    <ProductsUI productsData={displayedProducts}/>
+    <PaginatedProducts itemsPerPage={10}/>
   );
 }
 

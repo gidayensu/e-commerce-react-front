@@ -18,7 +18,7 @@ function Cart() {
       <div className="group">
     <div className="drawer z-10 drawer-end">
     
-    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" checked={drawerOpen} onChange={()=>{}} />
+    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" checked={drawerOpen} readOnly />
             
   <div className="drawer-content">
     {/* Page content here */}

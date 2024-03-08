@@ -1,4 +1,6 @@
+
 // import { fetchProducts } from '../../../util/http.js'
+import {useDispatch} from 'react-redux';
 import { useQuery } from '@tanstack/react-query';
 import CategoryUI from './CategoryUI.jsx';
 import { fetchProducts } from '../../../util/http.js';
@@ -7,16 +9,30 @@ import 'swiper/css/grid';
 import 'swiper/css/pagination';
 import { Grid, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { updateCategories } from '../../../store/categoriesSlice.jsx';
+import { useMemo, useEffect } from 'react';
 
+function Categories( ) {  
+  
+  const dispatch = useDispatch();
+    let allCategories = [];
 
-function Categories( ) {    
   const source = 'categories'
     const {data, isPending, error} =  useQuery({
                 
         queryKey: ['categories'],
-        queryFn: ()=> fetchProducts({source})
+        queryFn: ()=> fetchProducts({source}),
+        
       });
-
+      useEffect(()=> {
+        if(data)
+        dispatch(updateCategories(
+          {
+            data
+          }
+        ))
+      },[data])
+  
       if (isPending) {
         return <span className="loading loading-ring loading-md"></span>
       }
@@ -25,6 +41,7 @@ function Categories( ) {
         return error;
       }
       
+      allCategories = data;
 
 
     const categoryImages = [
@@ -51,6 +68,7 @@ function Categories( ) {
      ]
   
     
+
     const windowWidth = window.innerWidth;
     return(
 
@@ -73,11 +91,10 @@ function Categories( ) {
         {data.map((category, index)=> {
             return(
             
-            <div key={`${index}${category}`}>
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                 <CategoryUI categoryName={category} imageUrl={categoryImages[index]}/>
                 </SwiperSlide>
-            </div>
+            
             
             )
         }

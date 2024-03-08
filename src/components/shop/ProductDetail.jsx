@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/cartSlice.jsx";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,9 +8,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs'
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
-function ProductDetail({ productData }) {
+function ProductDetail() {
+
   const [productQuantity, setProductQuantity] = useState(1);
   const dispatch = useDispatch();
+
+  const {productData} = useSelector(state=>state.singleProduct)
 
   const addToCartHandler = (id, title, image, price, quantity) => {
     dispatch(addItem({ id, title, image, price, quantity }));
@@ -72,7 +75,7 @@ function ProductDetail({ productData }) {
                 </div>
                 <div className="rating flex mt-3 gap-1">
                   {[...Array(5)].map((_, index) => (
-                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(product.rating-1)} />
+                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(product.rating-1)} readOnly/>
                     
                   ))}
                   <span>({product.stock} in stock)</span>

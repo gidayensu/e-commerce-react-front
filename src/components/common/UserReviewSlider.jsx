@@ -38,7 +38,7 @@ function UserReviewSlider() {
             <span>
             <div className="rating rating-sm flex  gap-1 items-center">
                   {[...Array(5)].map((_, index) => (
-                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(1+index)} />
+                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(1+index)} readOnly/>
                     
                   ))}
                   
@@ -58,7 +58,7 @@ function UserReviewSlider() {
             <span>
             <div className="rating rating-sm flex  gap-1 items-center">
                   {[...Array(5)].map((_, index) => (
-                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(1+index)} />
+                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(1+index)} readOnly/>
                     
                   ))}
                   

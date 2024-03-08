@@ -1,11 +1,34 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import FeaturedProduct from "../components/shop/products/FeaturedProduct.jsx";
 import Products from "../components/shop/Products.jsx";
 import Categories from "../components/shop/categories/Categories.jsx";
 import Accordion from "../components/common/Accordion.jsx";
 import UserReviewSlider from "../components/common/UserReviewSlider.jsx";
+import { fetchData } from "../store/productSlice.jsx";
+import FeaturedProducts from "../components/shop/products/FeaturedProducts.jsx";
 
 function LandingPage() {
+  
+  const dispatch = useDispatch();
+
+    const { products, status, error } = useSelector((state) => state.products);
+
+    useEffect(() => {
+        dispatch(fetchData());
+      }, [dispatch]);
+    
+      if (status === 'loading') {
+        return <div>Loading...</div>;
+      }
+    
+      if (status === 'failed') {
+        return <div>Error: {error}</div>;
+      }
+    
+      
+  
   const slides = [
     "https://raw.githubusercontent.com/thurdeon/GuessGames/master/daniel-romero-6V5vTuoeCZg-unsplash.jpg",
     "https://raw.githubusercontent.com/thurdeon/GuessGames/master/c-d-x-PDX_a_82obo-unsplash(1).jpg",
@@ -56,7 +79,7 @@ function LandingPage() {
             <FeaturedProduct productId={6} />
           </div>
           <div className="col-span-3">
-            <Products source={"featured"} />
+            <FeaturedProducts />
           </div>
         </div>
         <Link to="shop">

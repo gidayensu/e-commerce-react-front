@@ -42,7 +42,9 @@ function FeaturedProduct({ productId }) {
 
   
   return (
-    <>
+    <> {
+      
+    }
       {data.map((product) => {
         const productPrice = Math.ceil(product.price)
         const discountedPrice = Math.floor(productPrice - productPrice * (product.discountPercentage / 100))
@@ -66,7 +68,7 @@ function FeaturedProduct({ productId }) {
                 
                 <div className="rating rating-md flex  gap-1 items-center">
                   {[...Array(5)].map((_, index) => (
-                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(product.rating-1)} />
+                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(product.rating-1)} readOnly/>
                     
                   ))}
                   <span>({product.stock} in stock)</span>

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../../../util/http.js';
 
 export const useQueryProcessor = ()=> {
-  const source = "categories";
+  const source = "featured";
 
     const {data, isPending, error} =  useQuery({
         queryKey: ['categories'],
@@ -17,7 +17,7 @@ export const useQueryProcessor = ()=> {
         return error;
       }
       
-    return {data}
+    return {data, isPending, error}
     
   }
 
