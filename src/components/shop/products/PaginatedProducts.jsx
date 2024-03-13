@@ -2,7 +2,7 @@ import ReactPaginate from 'react-paginate';
 import {  useEffect, useMemo, useState } from "react"
 import ProductsUI from './ProductsUI';
 import {  useSelector } from 'react-redux';
-
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 
 
 function PaginatedProducts({ itemsPerPage }) {
@@ -56,22 +56,22 @@ function PaginatedProducts({ itemsPerPage }) {
     <>
       <ProductsUI productsData={currentItems} />
       <ReactPaginate
-        nextLabel="next >"
+        nextLabel={<FaCaretRight/>}
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
         pageCount={pageCount}
-        previousLabel="< previous "
-        pageClassName="page-item join-item btn"
-        pageLinkClassName="page-link"
-        previousClassName="page-item join-item btn"
+        previousLabel={<FaCaretLeft/>}
+        pageClassName="page-item"
+        pageLinkClassName="page-link btn rounded-none bg-transparent"
+        previousClassName="page-item "
         previousLinkClassName="page-link"
-        nextClassName="page-item join-item btn"
-        nextLinkClassName="page-link"
+        nextClassName="page-item "
+        nextLinkClassName="page-link "
         breakLabel="..."
         breakClassName="page-item"
-        breakLinkClassName="page-link text-center btn"
-        containerClassName="pagination join"
+        breakLinkClassName="page-link text-center  "
+        containerClassName="pagination join md:w-full -ml-8"
         activeClassName="active bg-primary text-white"
         renderOnZeroPageCount={null}
       />

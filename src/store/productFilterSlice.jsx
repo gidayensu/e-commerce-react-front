@@ -1,12 +1,12 @@
 import {createSlice } from '@reduxjs/toolkit';
-const highestPossiblePrice = 1000000000;
+const HIGHEST_PRICE = 1000000000;
 
 const initialProductFilterState = {
     filteredProducts: [],
     category: '',
     minPrice: 0,
     sortDirection: "",
-    maxPrice: highestPossiblePrice,
+    maxPrice: HIGHEST_PRICE,
     searchValue: '',
     filtered: false,
     categoryCounts: {
@@ -34,14 +34,14 @@ const initialProductFilterState = {
   };
   
   const productFilterSlice = createSlice({
-    name: 'product',
+    name: 'productsFilter',
     initialState: initialProductFilterState,
     reducers: {
       clearFilters(state) {
         state.filteredProducts = [];
         state.category = '';
         state.minPrice = 0;
-        state.maxPrice = highestPossiblePrice;
+        state.maxPrice = HIGHEST_PRICE;
         state.categoryCounts = {};
         state.sortDirection = '';
         state.filtered = false;
@@ -49,34 +49,34 @@ const initialProductFilterState = {
   
       filterByCategory(state, action) {
         const category = action.payload.category;
-        const data = action.payload.products;
+        const productsData = action.payload.products;
         state.category = category;
-        state.filteredProducts = filterProducts(data, state.minPrice, state.maxPrice, category, state.searchValue, state.sortDirection);
+        state.filteredProducts = filterProducts(productsData, state.minPrice, state.maxPrice, category, state.searchValue, state.sortDirection);
         state.categoryCounts = countProductsByCategory(state.filteredProducts);
       },
   
       filterByPrice(state, action) {
         const minPrice = action.payload.minPrice;
         const maxPrice = action.payload.maxPrice;
-        const data = action.payload.products;
+        const productsData = action.payload.products;
         state.minPrice = minPrice;
         state.maxPrice = maxPrice;
-        state.filteredProducts = filterProducts(data, minPrice, maxPrice, state.category, state.searchValue, state.sortDirection);
+        state.filteredProducts = filterProducts(productsData, minPrice, maxPrice, state.category, state.searchValue, state.sortDirection);
         state.categoryCounts = countProductsByCategory(state.filteredProducts);
       },
   
       filterBySearch(state, action) {
         const searchValue = action.payload.eventData;
-        const data = action.payload.products;
+        const productsData = action.payload.products;
         state.searchValue = searchValue;
-        state.filteredProducts = filterProducts(data, state.minPrice, state.maxPrice, state.category, searchValue, state.sortDirection);
+        state.filteredProducts = filterProducts(productsData, state.minPrice, state.maxPrice, state.category, searchValue, state.sortDirection);
         state.categoryCounts = countProductsByCategory(state.filteredProducts);
       },
 
       sortProductsNamePrice(state,action) {
-          const data = action.payload.products;
+          const productsData = action.payload.products;
           state.sortDirection = action.payload.sortDirection;
-          const sortedData = state.filteredProducts.length !==0 ? state.filteredProducts = sortProducts(state.filteredProducts, state.sortDirection) : sortProducts(data, state.sortDirection);
+          const sortedData = state.filteredProducts.length !==0 ? state.filteredProducts = sortProducts(state.filteredProducts, state.sortDirection) : sortProducts(productsData, state.sortDirection);
           state.filteredProducts = sortedData;
       },
 
@@ -85,16 +85,16 @@ const initialProductFilterState = {
     },
   });
   
-  function sortProducts(data, sortDirection ) {
+  function sortProducts(productsData, sortDirection ) {
     if(sortDirection==="cheapest") {
-      return data.toSorted((a,b)=> a.price - b.price)
+      return productsData.toSorted((a,b)=> a.price - b.price)
     } 
     if(sortDirection === "expensive") {
-      return data.toSorted((a,b)=> b.price - a.price);
+      return productsData.toSorted((a,b)=> b.price - a.price);
     }   
     
     if (sortDirection === "nameZA") {
-      return data.toSorted((a,b)=> {
+      return productsData.toSorted((a,b)=> {
         const nameA = a.title.toLowerCase();
         const nameB = b.title.toLowerCase();
         if (nameA < nameB) {
@@ -109,7 +109,7 @@ const initialProductFilterState = {
     }
     
     if (sortDirection === "nameAZ") {
-      return data.toSorted((a,b)=> {
+      return productsData.toSorted((a,b)=> {
         const nameA = a.title.toLowerCase();
         const nameB = b.title.toLowerCase();
         if (nameA > nameB) {
@@ -121,12 +121,15 @@ const initialProductFilterState = {
           return 0;
         }
       })
+    } else {
+      console.log("unexpect sort direction:", sortDirection)
+      return productsData;
     }
   }
 
-  function filterProducts(data, minPrice, maxPrice, category, searchValue, sortDirection) {
-    const filtered = data.filter(item => {
-          const priceInRange = maxPrice === highestPossiblePrice ? item.price !== maxPrice : item.price <= maxPrice && item.price >= minPrice;
+  function filterProducts(productsData, minPrice, maxPrice, category, searchValue, sortDirection) {
+    const filtered = productsData.filter(item => {
+          const priceInRange = maxPrice === HIGHEST_PRICE ? item.price !== maxPrice : item.price <= maxPrice && item.price >= minPrice;
           const categoryMatch = category === '' ? true : item.category === category;
           const searchMatch = searchValue === '' ? true : new RegExp(searchValue, 'i').test(item.title);
           return priceInRange && categoryMatch && searchMatch;

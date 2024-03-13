@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FeaturedProduct from "../components/shop/products/FeaturedProduct.jsx";
-import Products from "../components/shop/Products.jsx";
+
 import Categories from "../components/shop/categories/Categories.jsx";
 import Accordion from "../components/common/Accordion.jsx";
 import UserReviewSlider from "../components/common/UserReviewSlider.jsx";

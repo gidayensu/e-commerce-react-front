@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchProduct } from "../util/http.js";
 import ShopLoader from "../components/shop/ShopLoader";
 import ErrorComponent from "../components/common/Error";
-import RecommendedProducts from "../components/shop/products/RecommendedProducts.jsx";
+import RelatedProducts from "../components/shop/products/RelatedProducts.jsx";
 import { getProductData } from "../store/singleProductSlice.jsx";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect } from "react";
@@ -15,8 +15,8 @@ function ProductPage() {
   const dispatch = useDispatch();
 
   
-  let productCategory = '';
-  let productData = [];
+  // let productCategory = '';
+  // let productData = [];
 
   // let ifo = 1; 
   // if (ifo) {
@@ -24,11 +24,11 @@ function ProductPage() {
   //   console.log(productCategory, productData);
   // }
 
-  useEffect(()=> {
-    if (productCategory.length !==0 && productData.length!==0) {
-      dispatch(getProductData({productData, productCategory}))
-    }
-  }, [productData, productCategory])
+  // useEffect(()=> {
+  //   if (productCategory.length !==0 && productData.length!==0) {
+  //     dispatch(getProductData({productData, productCategory}))
+  //   }
+  // }, [productData, productCategory])
   
   const { productId } = useParams();
   
@@ -55,26 +55,20 @@ function ProductPage() {
          </div>
     );
   }
-    productCategory = data[0].category;
-    productData = data;
+    const productCategory = data[0].category;
+    const productData = data;
 
-  
+    dispatch(getProductData({productData, productCategory}))
     
       
-
-     
   
-  
-  
-  
-
   return (
     <>
       <Breadcrumbs/>
       <ProductDetail />
-      <h2 className="font-semibold m-5 md:text-center md:mb-10">Recommended Products</h2>
+      <h2 className="font-semibold m-5 md:text-center md:mb-10">Related Products</h2>
       <div className="md:mx-32">
-      <RecommendedProducts/>
+      <RelatedProducts productCategory = {productCategory}/>
       </div>
     </>
   )

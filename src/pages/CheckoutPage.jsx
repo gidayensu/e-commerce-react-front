@@ -7,14 +7,10 @@ import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
 function CheckoutPage () {
     const { items } = useSelector((state) => state.cart);
 
-    const breadcrumbs = (<div className="md:ml-32 lg:ml-44 mb-2">
-    <Breadcrumbs />
-    </div>)
-
     if(items.length==0)   {
         return (
             <>
-           {breadcrumbs}
+           <Breadcrumbs />
             
             <div className="flex flex-col justify-center items-center gap-4">
             <img className = "w-32 h-auto md:w-64" src="https://www.mittalstamp.com/empty%20cart%20icon.svg" alt="empty cart" />
@@ -29,7 +25,7 @@ function CheckoutPage () {
 
     return (
       <>
-      {breadcrumbs}
+      <Breadcrumbs/>
         <div className="flex flex-col ml-5 mr-10 md:flex-row gap-4 md:gap-28 md:ml-48 md:justify-center">
           <OrderDetail />
           {/* <h1 className="font-bold text-2xl">Shipping Details</h1> */}

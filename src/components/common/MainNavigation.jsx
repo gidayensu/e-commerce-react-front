@@ -24,6 +24,7 @@ export default function MainNavigation() {
       
     }
   }
+   
 
   const darkMode = (  <label className="cursor-pointer grid place-items-center">
   <input onClick={toggleTheme} type="checkbox" value="synthwave" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"/>
@@ -34,7 +35,7 @@ export default function MainNavigation() {
   return (
     <>
     
-    <nav data-theme={theme} className="bg-[#0b56ad] sticky top-0 z-50">
+    <nav data-theme={theme} className="bg-[#0b56ad] sticky top-0 z-30">
       <div className="menu">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -88,8 +89,8 @@ export default function MainNavigation() {
             >
               {/* phone navbar  */}
               
-              {isOpen ? <AiOutlineClose  className="text-2xl text-white" />
-               : <AiOutlineMenu className="text-2xl text-white"/>}
+              {isOpen ? <AiOutlineClose  className="text-2xl text-white z-50" />
+               : <AiOutlineMenu className="text-2xl text-white z-50"/>}
             </button>
             
           </div>
@@ -103,12 +104,12 @@ export default function MainNavigation() {
       </div>
 
       {isOpen && (
-        <div className="sm:hidden" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <MenuItem text="Home" link="/" />
-            <MenuItem text="About" link="about-us" />
-            <MenuItem text="Shop" link="shop" />
-            <MenuItem text="Contact Us" link="contact-us" />
+        <div className="md:hidden absolute bg-[#0b56ad] w-full h-screen top-0 flex justify-center items-center z-20" id="mobile-menu">
+          <div className="px-2 pt-2  pb-3 space-y-1 flex flex-col justify-center items-center ">
+            <MenuItem text="Home" link="/" toggleMenu={toggleMenu}/>
+            <MenuItem text="About" link="about-us" toggleMenu={toggleMenu}/>
+            <MenuItem text="Shop" link="shop" toggleMenu={toggleMenu}/>
+            <MenuItem text="Contact Us" link="contact-us" toggleMenu={toggleMenu}/>
             
           </div>
         </div>
@@ -118,8 +119,8 @@ export default function MainNavigation() {
   
 }
 
-function MenuItem({ text, link }) {
+function MenuItem({ text, link, toggleMenu }) {
   return (
-    <NavLink to={link} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium text-center">{text}</NavLink>
+    <NavLink to={link} className="text-gray-300 font-bold hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base text-center" onClick={toggleMenu}>{text}</NavLink>
   );
 }

@@ -35,7 +35,7 @@ function ProductsUI ({productsData}) {
           return (
                <div key={id} className="relative group md:mb-4">
                 <div className="lg:w-56 xl:w-52 bg-base-100 shadow-md rounded-lg cursor-pointer  md:h-52">
-                  <div className="flex items-center justify-center text-center text-[11px] absolute bg-amber-200 font-semibold rounded-sm w-10 mt-2 h-4 md:right-3 right-1">
+                  <div className="flex items-center justify-center text-center text-[11px] absolute bg-amber-200 font-semibold rounded-sm w-10 mt-2 h-4 md:right-3 xl:right-5 right-1">
                       <p>{`${discountPercentage}%`}</p>
                   </div>
                   <Link to={`/shop/product/${id}`}>

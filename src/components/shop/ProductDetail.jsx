@@ -25,9 +25,9 @@ function ProductDetail() {
     }
   };
 
-  const incrementHandler = () => updateProductQuantity(productQuantity + 1);
+  const incrementHandler = () => updateProductQuantity(productQuantity+1);
 
-  const decrementHandler = () => updateProductQuantity(productQuantity - 1);
+  const decrementHandler = () => updateProductQuantity(productQuantity-1);
 
   return (
     <>
@@ -83,9 +83,10 @@ function ProductDetail() {
               </div>
               <div className="flex md:items-center md:justify-normal items-center gap-4 md:gap-0 mt-5 flex-nowrap md:grid md:grid-cols-2 ">
                 <div className="flex justify-center items-center gap-4 border-2 border-gray-400 h-12 w-32 rounded-full">
-                  <button onClick={incrementHandler} className="hover:font-bold">+</button>
+                <button onClick={decrementHandler} className="hover:font-bold">-</button>
+                  
                   <p>{productQuantity}</p>
-                  <button onClick={decrementHandler} className="hover:font-bold">-</button>
+                  <button onClick={incrementHandler} className="hover:font-bold">+</button>
                 </div>
                 <div>
                   <button className="bg-primary hover:bg-sky-700 rounded-full text-white h-12 w-52 md:w- xl:-ml-28 md:-ml-16" onClick={() => addToCartHandler(product.id, product.title, product.thumbnail, discountedPrice, productQuantity)}>ADD TO CART</button>

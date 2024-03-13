@@ -5,13 +5,13 @@ import { fetchProducts } from "../../../util/http.js";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
-function RecommendedProducts () {
+function RelatedProducts ( ) {
     const {productCategory } = useSelector(state=>state.singleProduct);
     
     const source = productCategory;
-    console.log('this is product category', productCategory)
+    
     const { data, isLoading, error } = useQuery({
-        queryKey: ["category-products"],
+        queryKey: ["category-products", productCategory],
         queryFn: () => fetchProducts({ source }),
       });
     
@@ -37,4 +37,4 @@ function RecommendedProducts () {
     );
 }
 
-export default RecommendedProducts;
+export default RelatedProducts;

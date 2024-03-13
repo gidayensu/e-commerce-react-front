@@ -1,3 +1,4 @@
+import TopScroll from './components/common/TopScroll.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './util/http.js';
@@ -94,12 +95,16 @@ function App() {
   }, [router]);
 
   
-  return <div>
+  return (
+    
     <QueryClientProvider client ={queryClient}>
+      
     <ToastContainer position='top-center' limit={3}/>
     <RouterProvider router={router}/>
+    
     </QueryClientProvider>
-    </div>
+    
+    )
       
   
 }

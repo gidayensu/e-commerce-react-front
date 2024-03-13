@@ -25,10 +25,9 @@ const calculationClass = "grid grid-rows-3 w-72 gap-1 font-bold";
         <div>
         <p className="font-bold mb-2 text-2xl">Order Details</p>
         {
-            items.map(item=>{
+            items.map((item, index)=>{
                 return(
-                <div>
-                <div className="flex gap-4 w-72 border p-4 rounded-lg mb-5 bg-gray-50 border-gray-300">
+                <div key={index} className="flex gap-4 w-72 border p-4 rounded-lg mb-5 bg-gray-50 border-gray-300">
                     <img className="h-14 md:h-16"  src={item.image} alt={item.name} />
                     <div className="col-span-2 w-32 flex flex-col  items-start">
                         <p className="text-sm line-clamp-2">{item.name}</p>
@@ -59,7 +58,7 @@ const calculationClass = "grid grid-rows-3 w-72 gap-1 font-bold";
                     
                 </div>
                 
-                </div>
+                
                 );
             })
             

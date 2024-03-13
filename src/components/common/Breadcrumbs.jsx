@@ -19,9 +19,9 @@ function Breadcrumbs() {
         );
       
     });
-
+    
   return (
-    <div className="text-sm breadcrumbs ml-5 mt-2">
+    <div className="text-sm breadcrumbs md:ml-32 lg:ml-64 mb-2 ml-5 mt-2">
       <ul>
         <li>
           <Link to='/'>Home</Link>
