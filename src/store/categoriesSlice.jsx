@@ -1,9 +1,10 @@
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 
 const initialState = {
   categories: [],
+  selectedCategory: '',
   loading: false,
   error: null,
 };
@@ -17,11 +18,15 @@ const categoriesSlice = createSlice({
       updateCategories(state, action) {
         state.categories = action.payload.data;
         
+      },
+
+      selectedCategory(state, action) {
+        state.selectedCategory = action.payload.category;
       }
     },
 
   });
 
-  export const {updateCategories} = categoriesSlice.actions;
+  export const {updateCategories, selectedCategory} = categoriesSlice.actions;
 export default categoriesSlice;
 

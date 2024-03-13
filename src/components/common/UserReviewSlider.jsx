@@ -59,7 +59,7 @@ function UserReviewSlider() {
         className="mySwiper"
       >
         {reviews.map((review) => (
-          <SwiperSlide className="mySwiper flex justify-center items-center h-72">
+          <SwiperSlide key={review.reviewer} className="mySwiper flex justify-center items-center h-72">
             <div className="flex flex-col text-center items-center justify-center bg-white p-4 w-96 md:rounded-2xl rounded-3xl">
               <span>
                 <img

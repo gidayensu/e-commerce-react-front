@@ -1,5 +1,5 @@
 import {createSlice } from '@reduxjs/toolkit';
-const HIGHEST_PRICE = 1000000000;
+export const HIGHEST_PRICE = 1000000000;
 
 const initialProductFilterState = {
     filteredProducts: [],
@@ -53,6 +53,7 @@ const initialProductFilterState = {
         state.category = category;
         state.filteredProducts = filterProducts(productsData, state.minPrice, state.maxPrice, category, state.searchValue, state.sortDirection);
         state.categoryCounts = countProductsByCategory(state.filteredProducts);
+        state.filtered = true;
       },
   
       filterByPrice(state, action) {
@@ -63,6 +64,8 @@ const initialProductFilterState = {
         state.maxPrice = maxPrice;
         state.filteredProducts = filterProducts(productsData, minPrice, maxPrice, state.category, state.searchValue, state.sortDirection);
         state.categoryCounts = countProductsByCategory(state.filteredProducts);
+        state.filtered = true;
+        
       },
   
       filterBySearch(state, action) {
@@ -71,6 +74,8 @@ const initialProductFilterState = {
         state.searchValue = searchValue;
         state.filteredProducts = filterProducts(productsData, state.minPrice, state.maxPrice, state.category, searchValue, state.sortDirection);
         state.categoryCounts = countProductsByCategory(state.filteredProducts);
+        state.filtered = true;
+        
       },
 
       sortProductsNamePrice(state,action) {
@@ -78,6 +83,8 @@ const initialProductFilterState = {
           state.sortDirection = action.payload.sortDirection;
           const sortedData = state.filteredProducts.length !==0 ? state.filteredProducts = sortProducts(state.filteredProducts, state.sortDirection) : sortProducts(productsData, state.sortDirection);
           state.filteredProducts = sortedData;
+          state.filtered = true;
+          
       },
 
 
