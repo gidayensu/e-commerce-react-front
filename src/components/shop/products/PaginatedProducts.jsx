@@ -1,72 +1,60 @@
+import React, { useEffect, useState } from "react";
 import ReactPaginate from 'react-paginate';
-import {  useEffect, useMemo, useState } from "react"
 import ProductsUI from './ProductsUI';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 
-
 function PaginatedProducts({ itemsPerPage }) {
-  // const dispatch = useDispatch();
+  const { products } = useSelector(state => state.products);
+  const { filteredProducts, filtered } = useSelector(state => state.filter);
 
-    // useEffect(()=>{
-    //     dispatch(fetchData())
-    // }, []) 
-  
-
-  
-    
-  // We start with an empty list of data.
-  const [currentItems, setCurrentItems] = useState(null);
+  const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-  const { products } = useSelector((state)=>state.products);
-  const {filteredProducts} = useSelector((state)=>state.filter);
-
-  let productsToBeDisplayed = products;
-
-  if (filteredProducts.length !== 0) {
-    productsToBeDisplayed = filteredProducts;
-  }
-
-  useMemo(()=> {
-    setCurrentItems(productsToBeDisplayed)
-  }, [products, productsToBeDisplayed])
-
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
 
-    
-
   useEffect(() => {
-    // Fetch items from another resources.
-    const endOffset = itemOffset + itemsPerPage;
-    // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(productsToBeDisplayed.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(productsToBeDisplayed.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, productsToBeDisplayed]);
+    let productsToBeDisplayed = [];
 
-  // Invoke when user click to request another page.
+    if (filteredProducts.length !== 0) {
+      productsToBeDisplayed = filteredProducts;
+    } else if (filteredProducts.length === 0 && filtered) {
+      setCurrentItems(null);
+      return; 
+    } else {
+      productsToBeDisplayed = products;
+    }
+
+    const endOffset = itemOffset + itemsPerPage;
+    const slicedItems = productsToBeDisplayed.slice(itemOffset, endOffset);
+
+    setCurrentItems(slicedItems);
+    setPageCount(Math.ceil(productsToBeDisplayed.length / itemsPerPage));
+  }, [filteredProducts, filtered, products, itemOffset, itemsPerPage]);
+
   const handlePageClick = (event) => {
-    const newOffset = event.selected * itemsPerPage % productsToBeDisplayed.length;
-    // console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+    const newOffset = event.selected * itemsPerPage;
     setItemOffset(newOffset);
   };
+
+  if (currentItems === null) {
+    return <p>No products meet your specification. Clear filters or search with new specifications</p>;
+  }
 
   return (
     <>
       <ProductsUI productsData={currentItems} />
       <ReactPaginate
-        nextLabel={<FaCaretRight/>}
+        nextLabel={<FaCaretRight />}
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
         pageCount={pageCount}
-        previousLabel={<FaCaretLeft/>}
+        previousLabel={<FaCaretLeft />}
         pageClassName="page-item"
         pageLinkClassName="page-link btn rounded-none bg-transparent"
-        previousClassName="page-item "
+        previousClassName="page-item btn"
         previousLinkClassName="page-link"
-        nextClassName="page-item "
+        nextClassName="page-item btn"
         nextLinkClassName="page-link "
         breakLabel="..."
         breakClassName="page-item"
@@ -79,4 +67,4 @@ function PaginatedProducts({ itemsPerPage }) {
   );
 }
 
-export default PaginatedProducts
+export default PaginatedProducts;
