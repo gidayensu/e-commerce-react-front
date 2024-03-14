@@ -1,20 +1,28 @@
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Breadcrumbs() {
+    const {productData} = useSelector(state=>state.singleProduct)
+    console.log(productData)
     const location = useLocation();
     const {pathname} = location;
     const segments = pathname.split('/');
     let url = '/';
 
+    //regex to check if the path is only numbers to use a product name instead
+    const containsOnlyNumbers = input => /^\d+$/.test(input);
+
     const filteredSegments = segments.filter(segment=>segment !== "");
     
     const breadcrumbs = filteredSegments.map((segment, index) => {
         segment == segments[1] ? url += segment : url += `/${segment}`;
-      
-        url === '/shop/product' ? url = '/shop' : url;
+        url === '/shop/product' && !containsOnlyNumbers(segment) ? url = '/shop' : url;
+        let displayedSegment = segment;
+        containsOnlyNumbers(segment) ? displayedSegment = productData[0].title : displayedSegment;
+
         return (
           <li key={index}>
-            <Link to={url}>{segment}</Link>
+            <Link to={url}>{displayedSegment}</Link>
           </li>
         );
       

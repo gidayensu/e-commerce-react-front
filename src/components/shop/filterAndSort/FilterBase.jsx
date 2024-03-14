@@ -7,6 +7,7 @@ import { HIGHEST_PRICE } from "../../../store/productFilterSlice.jsx";
 function FilterBase () {
     const [minPrice, setMinPrice]  = useState(0);
     const [maxPrice, setMaxPrice] = useState(HIGHEST_PRICE);
+    const [showAllCategories, setShowAllCategories] = useState(false);
 
     const { categoryCounts, category:selectedCategory, filtered } = useSelector(state=>state.filter);
     
@@ -56,6 +57,8 @@ function FilterBase () {
     }))
   }
 
+  //more or less categories
+  const toggleShowAllCategories = () =>  setShowAllCategories(!showAllCategories);
 
    
     // const filterClass = "-ml-4 md:-ml-0 w-80 md:w-60 h-9 flex items-center";
@@ -65,25 +68,27 @@ function FilterBase () {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1 cursor-pointer">
 
-          {categories.map((category, index) => {
-            const filterClass =
-              selectedCategory === category
-                ? "bg-primary text-white w-44 rounded-sm"
-                : ""; 
-            return (
-              <span
-                key={index}
-                className={filterClass}
-                onClick={() => categoryFilterHandler(category)}
-              >
-                <p className="ml-5">
-                  {category} (
-                  {categoryCounts[category] ? categoryCounts[category] : 0})
-                </p>
-              </span>
-            );
-          })}
-        </div>
+        {categories.slice(0, showAllCategories ? categories.length : 4).map((category, index) => {
+      const filterClass =
+        selectedCategory === category ? "bg-primary text-white w-44 rounded-sm" : ""; 
+      return (
+        <span
+          key={index}
+          className={filterClass}
+          onClick={() => categoryFilterHandler(category)}
+        >
+          <p className="ml-5">
+            {category} ({categoryCounts[category] ? categoryCounts[category] : 0})
+          </p>
+        </span>
+      );
+    })}
+    {categories.length > 4 && (
+      <span className="cursor-pointer text-primary" onClick={toggleShowAllCategories}>
+        {showAllCategories ? `Show less` : `Show all ${categories.length}`}
+      </span>
+    )}
+  </div>
         <span className="mt-5 font-bold">PRICE RANGE</span>
         <div className="flex gap-3 items-center">
           <span className="grid">
@@ -114,7 +119,7 @@ function FilterBase () {
         <button className={`${ numberMinPrice > numberMaxPrice || numberMinPrice === 0 ? 'btn-disabled bg-gray-400': 'bg-primary'} w-56 h-8 rounded-md text-white text-[12px] `}
         onClick={priceFilterHandler}>
           Apply Filter
-          {console.log(filtered)}
+          
         </button>
         
         {numberMinPrice > numberMaxPrice  && 
