@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FeaturedProduct from "../components/shop/products/FeaturedProduct.jsx";
-
+import { scrollToTop } from "../components/common/ScrollToTop.js";
 import Categories from "../components/shop/categories/Categories.jsx";
 import Accordion from "../components/common/Accordion.jsx";
 import UserReviewSlider from "../components/common/UserReviewSlider.jsx";
@@ -10,10 +10,10 @@ import { fetchData } from "../store/productSlice.jsx";
 import FeaturedProducts from "../components/shop/products/FeaturedProducts.jsx";
 
 function LandingPage() {
-  
+  scrollToTop();
   const dispatch = useDispatch();
 
-    const { products, status, error } = useSelector((state) => state.products);
+    const { status, error } = useSelector((state) => state.products);
 
     useEffect(() => {
         dispatch(fetchData());

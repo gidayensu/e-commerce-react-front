@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
-
+import { scrollToTop } from "../components/common/ScrollToTop.js";
 import ProductDetail from "../components/shop/ProductDetail.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProduct } from "../util/http.js";
@@ -8,27 +8,12 @@ import ShopLoader from "../components/shop/ShopLoader";
 import ErrorComponent from "../components/common/Error";
 import RelatedProducts from "../components/shop/products/RelatedProducts.jsx";
 import { getProductData } from "../store/singleProductSlice.jsx";
-import { useDispatch, useSelector} from "react-redux";
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 
 function ProductPage() {
+  scrollToTop()
   const dispatch = useDispatch();
-
-  
-  // let productCategory = '';
-  // let productData = [];
-
-  // let ifo = 1; 
-  // if (ifo) {
-  //   const {productCategory, productData} = useSelector(state=>state.singleProduct);
-  //   console.log(productCategory, productData);
-  // }
-
-  // useEffect(()=> {
-  //   if (productCategory.length !==0 && productData.length!==0) {
-  //     dispatch(getProductData({productData, productCategory}))
-  //   }
-  // }, [productData, productCategory])
   
   const { productId } = useParams();
   

@@ -1,15 +1,15 @@
 import {Link} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, addItem, clearCart } from "../../store/cartSlice.jsx";
+import { removeItem, addItem, removeProductFromCart } from "../../store/cartSlice.jsx";
 
 function CartItems({drawerToggler}) {
   const { items, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const clearCartHandler = ()=> {
-    dispatch(clearCart())
+  
+  const removeProductFromCartHandler = (itemId)=> {
+    dispatch(removeProductFromCart(itemId))
   }
-
   const cartItemsClickHandler = (id, isIncrement) => {
     const action = isIncrement ? addItem : removeItem;
     dispatch(action({ id }));
@@ -45,7 +45,7 @@ function CartItems({drawerToggler}) {
                 </button>
                 <p className='ml-5 font-bold'>{`GHS ${item.totalPrice}`}</p>  
               </div>
-              <button className='bg-gray-900 rounded-md text-[11px] text-white h-7 w-16'> remove</button>  
+              <button onClick={()=>removeProductFromCartHandler(item.itemId)} className='bg-gray-900 rounded-md text-[11px] text-white h-7 w-16'> remove</button>  
               </div>
               
             </div>
@@ -65,9 +65,9 @@ function CartItems({drawerToggler}) {
         ) : (
           <div className="flex flex-col gap-3">
             <p className="font-bold text-center">{`Total: GHS ${totalPrice}`}</p>
-            <button onClick={clearCartHandler} className="p-1 border-2 hover:border-gray-950 border-gray-700 text-black font-bold rounded-full">VIEW CART</button>
+            <Link to="/shop/checkout"><button onClick={drawerToggler}  className="p-1 border-2 hover:border-gray-950 border-primary text-primary w-full font-bold rounded-full h-10">Checkout</button></Link>
             
-            <Link to="/shop/checkout"><button onClick={drawerToggler} className="p-1 w-full h-8 bg-primary text-white font-bold rounded-full">CHECKOUT</button></Link>
+            <Link to="/shop/cart"><button onClick={drawerToggler} className="p-1 w-full h-10 bg-primary text-white font-bold rounded-full">View Cart</button></Link>
           </div>
         )}
       </div>

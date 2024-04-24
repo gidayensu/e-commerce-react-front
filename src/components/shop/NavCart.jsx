@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import NavCartItems from "./NavCartItems";
+import { clearCart } from "../../store/cartSlice.jsx";
 
 function Cart() {
   const [drawerOpen, setDrawerOpen] = useState(false);
-
+  const dispatch = useDispatch();
   const totalItems = useSelector((state) => state.cart.totalItems);
 
   const drawerToggler = ()=> {
     setDrawerOpen(prevDrawerOpen=>!prevDrawerOpen);
+  }
+
+  const clearCartHandler = ()=> {
+    dispatch(clearCart())
   }
 
   return (
@@ -38,7 +43,7 @@ function Cart() {
     <ul className="menu p-4 w-80 min-h-full text-base-content bg-white">
          <span className="font-bold text-1xl flex justify-between mr-5">
           <p>YOUR CART</p>
-          <button>(clear cart)</button>
+          {totalItems !==0 && <button onClick={clearCartHandler}>(clear cart)</button>}
           </span>
 
          <button onClick = {drawerToggler} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>

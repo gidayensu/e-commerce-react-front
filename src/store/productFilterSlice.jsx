@@ -129,7 +129,7 @@ const initialProductFilterState = {
         }
       })
     } else {
-      console.log("unexpect sort direction:", sortDirection)
+      
       return productsData;
     }
   }

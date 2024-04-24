@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, addItem  } from "../../store/cartSlice.jsx";
+import { removeItem, addItem, removeProductFromCart  } from "../../store/cartSlice.jsx";
 import { BsTrash3Fill } from "react-icons/bs";
 
 function OrderDetails () {
@@ -7,8 +7,8 @@ function OrderDetails () {
 
   const dispatch = useDispatch();
 
-  const clearCartHandler = ()=> {
-    dispatch(clearCart())
+  const removeProductFromCartHandler = (id)=> {
+    dispatch(removeProductFromCart(id))
   }
 
   const shippingRate = 20;
@@ -50,7 +50,10 @@ const calculationClass = "grid grid-rows-3 w-72 gap-1 font-bold";
                   +
                 </button>
               </div>
+              <div onClick={()=>removeProductFromCartHandler(item.itemId)}>
               <BsTrash3Fill/>
+              </div>
+              
               <div>
                 
               </div>

@@ -1,4 +1,4 @@
-import TopScroll from './components/common/TopScroll.jsx';
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './util/http.js';
@@ -11,7 +11,8 @@ import ContactUsPage from './pages/ContactUsPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import ShopPage from './pages/ShopPage.jsx';
 import ProductPage from './pages/ProductPage.jsx';
-import CheckoutPage from './pages/CheckoutPage.jsx'
+import CheckoutPage from './pages/CheckoutPage.jsx';
+import CartPage from './pages/CartPage.jsx'
 import AboutUs from './pages/AboutUsPage.jsx';
 import { ToastContainer } from 'react-toastify';
 
@@ -48,6 +49,10 @@ function App() {
             {
               path: 'checkout',
               element: <CheckoutPage/>
+            }, 
+            {
+              path: 'cart',
+              element: <CartPage/>
             }
           ]
         },

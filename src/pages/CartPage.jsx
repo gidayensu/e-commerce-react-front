@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-import CheckoutForm from "../components/shop/CheckoutForm.jsx";
 import OrderDetail from "../components/order/OrderDetail.jsx";
 import { useSelector } from "react-redux";
 import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
 import { scrollToTop } from "../components/common/ScrollToTop.js";
 
-function CheckoutPage () {
-  scrollToTop()  
-  const { items } = useSelector((state) => state.cart);
 
+function CartPage () {
+
+    const { items } = useSelector((state) => state.cart);
+    scrollToTop()
+    
     if(items.length==0)   {
         return (
             <>
@@ -28,13 +29,15 @@ function CheckoutPage () {
     return (
       <>
       <Breadcrumbs/>
-        <div className="flex flex-col ml-5 mr-10 md:flex-row gap-4 md:gap-28 md:ml-48 md:justify-center">
+      <div className="flex flex-col gap-5 justify-center items-center ">
           <OrderDetail />
-          {/* <h1 className="font-bold text-2xl">Shipping Details</h1> */}
-          <CheckoutForm />
+          <Link to ="/shop/checkout" className="btn btn-primary bg-white border-primary border-2 text-primary rounded-full md:w-1/3 w-2/3 font-bold ">Checkout</Link>
+          <Link to="/shop" className="btn btn-primary rounded-full md:w-1/3 w-2/3 font-bold ">Return to Shop</Link>
+          
+        
         </div>
       </>
     );
 }
 
-export default CheckoutPage;
+export default CartPage;

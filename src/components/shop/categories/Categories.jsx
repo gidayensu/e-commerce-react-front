@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import { Grid, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { updateCategories } from '../../../store/categoriesSlice.jsx';
-import { useMemo, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function Categories( ) {  
   
