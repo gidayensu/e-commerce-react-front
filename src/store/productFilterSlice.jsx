@@ -69,10 +69,11 @@ const initialProductFilterState = {
       },
   
       filterBySearch(state, action) {
-        const searchValue = action.payload.eventData;
+        
+        const searchValue = action.payload.searchData;
         const productsData = action.payload.products;
         state.searchValue = searchValue;
-        state.filteredProducts = filterProducts(productsData, state.minPrice, state.maxPrice, state.category, searchValue, state.sortDirection);
+        state.searchValue === '' ? state.filteredProducts = [] : state.filteredProducts = filterProducts(productsData, state.minPrice, state.maxPrice, state.category, searchValue, state.sortDirection);
         state.categoryCounts = countProductsByCategory(state.filteredProducts);
         state.filtered = true;
         
