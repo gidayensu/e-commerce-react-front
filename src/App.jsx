@@ -14,7 +14,7 @@ import ProductPage from './pages/ProductPage.jsx';
 import CheckoutPage from './pages/CheckoutPage.jsx';
 import CartPage from './pages/CartPage.jsx'
 import AboutUs from './pages/AboutUsPage.jsx';
-import { ToastContainer } from 'react-toastify';
+
 
 function App() {
   
@@ -104,7 +104,7 @@ function App() {
     
     <QueryClientProvider client ={queryClient}>
       
-    <ToastContainer position='top-center' limit={3}/>
+    
     <RouterProvider router={router}/>
     
     </QueryClientProvider>
