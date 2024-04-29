@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FaBan } from "react-icons/fa";
-import { addItem } from "../../store/cartSlice.jsx";
-import { filterByCategory } from "../../store/productFilterSlice.jsx";
+import { addItem } from "../../../store/cartSlice.jsx";
+import { filterByCategory } from "../../../store/productFilterSlice.jsx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import toast, {Toaster} from 'react-hot-toast';
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 
-function ProductDetail() {
+function OneProductLayout() {
   const [productQuantity, setProductQuantity] = useState(1);
   const dispatch = useDispatch();
 
@@ -76,7 +76,7 @@ function ProductDetail() {
           
           <main
             key={product.id}
-            className="flex flex-col m-6 md:m-0 md:grid md:grid-cols-2 md:mt-16 md:mb-36 mt-6 mb-6 gap-9"
+            className="flex flex-col m-6 md:m-0 md:grid md:grid-cols-2 md:mt-16 md:mb-36 mt-6 mb-6 gap-9 sm:gap-32 md:gap-36 lg:gap-18 xl:gap-32"
           >
           
             <div className="flex justify-center items-center xl:ml-64 md:ml-44 md:w-1/2 md:border border-slate-300 rounded-3xl">
@@ -127,7 +127,8 @@ function ProductDetail() {
                     </Link>
                   </div>
                 </div>
-                <div className="rating flex mt-3 gap-1">
+                <div className="rating flex flex-wrap sm:flex sm:flex-row mt-3 gap-4 sm:items-center">
+                  <div className="flex">
                   {[...Array(5)].map((_, index) => (
                     <input
                       key={index}
@@ -138,24 +139,42 @@ function ProductDetail() {
                       readOnly
                     />
                   ))}
-                  
+                  </div>
                   
                   <span>({productStock} in stock)</span>
+                  <div >
+                  {productStock === 0 &&
+                  <div className="h-18 text-white flex gap-2 items-start justify-center w-32 md:w-44 bg-red-500 p-2 rounded-md "> 
+                  <FaBan />
+                  <p className="text-sm">Product out of stock</p>
+                  </div>
+                    }
+                  
+              {
+                      productQuantity > productStock && productStock !== 0 && 
+                      <div className="h-8 text-white flex gap-2 justify-center items-center w-32 md:w-32 bg-red-500 p-2 rounded-md "> 
+                      <FaBan/>
+                      <p className="text-sm">Low stock</p>
+                      </div>
+                    }
+                  </div>
                 </div>
               </div>
-              <div className="flex md:items-center md:justify-normal items-center gap-4 md:gap-0 mt-5 flex-nowrap md:grid md:grid-cols-2 ">
-                <div className="flex justify-center items-center gap-4 border-2 border-gray-400 h-12 w-32 rounded-full">
+              
+              <div className="flex md:items-center md:justify-normal items-center gap-4 sm:gap-52 md:gap-52 lg:gap-24 xl:gap-16 mt-5 flex-nowrap md:grid md:grid-cols-2">
+                
+                <div className={`flex justify-center items-center gap-4 border-2 ${(productQuantity > productStock && productStock !== 0) || productStock === 0 ? 'text-red-500 font-bold border-red-500' : 'border-gray-400'}  h-12 w-32 rounded-full`}>
                   <button
                     onClick={decrementHandler}
-                    className="hover:font-bold"
+                    className="hover:font-bold text-3xl"
                   >
                     -
                   </button>
 
-                  <p>{productQuantity}</p>
+                  <p className="text-[20px]">{productQuantity}</p>
                   <button
                     onClick={incrementHandler}
-                    className="hover:font-bold"
+                    className={`${(productQuantity >= productStock && productStock !== 0) || productStock === 0 ? 'btn-disabled opacity-50': ''} hover:font-bold text-3xl`}
                   >
                     +
                   </button>
@@ -182,20 +201,7 @@ function ProductDetail() {
                 </div>
                 
               </div>
-              {productStock === 0 &&
-                  <div className="h-18  mt-5 text-white flex gap-2 items-start justify-center w-72 md:w-96 bg-red-500 p-2 rounded-md "> 
-                  <FaBan />
-                  <p className="text-sm">Product out of stock</p>
-                  </div>
-                    }
-                  
-              {
-                      productQuantity > productStock && productStock !== 0 && 
-                      <div className="h-18  mt-5 text-white flex gap-2 items-start justify-center w-72 md:w-96 bg-red-500 p-2 rounded-md "> 
-                      <FaBan/>
-                      <p className="text-sm">Selected quantity greater than products in stock</p>
-                      </div>
-                    }
+              
             </div>
             
           </main>
@@ -205,4 +211,4 @@ function ProductDetail() {
   );
 }
 
-export default ProductDetail;
+export default OneProductLayout;

@@ -13,17 +13,17 @@ function LandingPage() {
   scrollToTop();
   const dispatch = useDispatch();
 
-    const { status, error } = useSelector((state) => state.products);
+    const { loading, error } = useSelector((state) => state.products);
 
     useEffect(() => {
         dispatch(fetchData());
       }, [dispatch]);
     
-      if (status === 'loading') {
-        return <div>Loading...</div>;
-      }
+      // if (loading) {
+      //   return <div><span className="loading loading-ring loading-md"></span></div>;
+      // }
     
-      if (status === 'failed') {
+      if (error) {
         return <div>Error: {error}</div>;
       }
     

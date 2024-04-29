@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { scrollToTop } from "../common/ScrollToTop";
+import { scrollToTop } from "../../common/ScrollToTop";
 
 function ProductSwiper({ products }) {
   

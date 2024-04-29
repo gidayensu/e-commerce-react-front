@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from 'react-paginate';
-import ProductsUI from './ProductsUI';
+import ProductsLayout from './ProductsLayout';
 import { useSelector } from 'react-redux';
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 
@@ -42,7 +42,7 @@ function PaginatedProducts({ itemsPerPage }) {
 
   return (
     <>
-      <ProductsUI productsData={currentItems} />
+      <ProductsLayout productsData={currentItems} />
       <ReactPaginate
         nextLabel={<FaCaretRight />}
         onPageChange={handlePageClick}

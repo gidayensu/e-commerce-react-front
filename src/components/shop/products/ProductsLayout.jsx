@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ShopLoader from "../ShopLoader";
 
 
-function ProductsUI ({productsData}) {
+function ProductsLayout ({productsData}) {
 
     
   
@@ -58,4 +58,4 @@ function ProductsUI ({productsData}) {
     </>)
 }
 
-export default ProductsUI
+export default ProductsLayout
