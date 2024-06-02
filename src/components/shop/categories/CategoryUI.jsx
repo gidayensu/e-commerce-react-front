@@ -3,7 +3,7 @@
 
 import { Link } from "react-router-dom";
 import { scrollToTop } from "../../common/ScrollToTop.js";
-import { filterByCategory } from "../../../store/productFilterSlice.jsx";
+import { filterByCategory } from "../../../store/productFilterSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 
 function CategoryUI({ categoryName, imageUrl }) {

@@ -7,7 +7,7 @@ import { fetchProduct } from "../util/http.js";
 import ShopLoader from "../components/shop/ShopLoader";
 import ErrorComponent from "../components/common/Error";
 import RelatedProducts from "../components/shop/products/RelatedProducts.jsx";
-import { getProductData } from "../store/singleProductSlice.jsx";
+import { getProductData } from "../store/singleProductSlice.js";
 import { useDispatch } from "react-redux";
 
 

@@ -4,7 +4,7 @@ import Breadcrumbs from '../components/common/Breadcrumbs.jsx';
 import SideBarFilter from '../components/shop/filterAndSort/SideBarFilter.jsx';
 import Categories from '../components/shop/categories/Categories.jsx';
 import PaginatedProducts from '../components/shop/products/PaginatedProducts.jsx';
-import { fetchData } from '../store/productSlice.jsx';
+import { fetchData } from '../store/productSlice.js';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 

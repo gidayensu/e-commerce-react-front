@@ -1,8 +1,8 @@
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
-import { filterByPrice, filterByCategory, filterBySearch, clearFilters } from "../../../store/productFilterSlice.jsx";
+import { filterByPrice, filterByCategory, filterBySearch, clearFilters } from "../../../store/productFilterSlice.js";
 import { useState } from "react";
-import { HIGHEST_PRICE } from "../../../store/productFilterSlice.jsx";
+import { HIGHEST_PRICE } from "../../../store/productFilterSlice.js";
 
 function FilterBase () {
     const [minPrice, setMinPrice]  = useState(0);

@@ -6,7 +6,7 @@ import { scrollToTop } from "../components/common/ScrollToTop.js";
 import Categories from "../components/shop/categories/Categories.jsx";
 import Accordion from "../components/common/Accordion.jsx";
 import UserReviewSlider from "../components/common/UserReviewSlider.jsx";
-import { fetchData } from "../store/productSlice.jsx";
+import { fetchData } from "../store/productSlice.js";
 import FeaturedProducts from "../components/shop/products/FeaturedProducts.jsx";
 
 function LandingPage() {
