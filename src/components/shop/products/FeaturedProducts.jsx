@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import ProductsUI from "./ProductsUI";
+import ProductsLayout from "./ProductsLayout";
 
 function FeaturedProducts () {
     const {products} = useSelector(state=>state.products);
     const featuredProducts = products.filter((product)=> product.discountPercentage > 17);
     
     return (
-        <ProductsUI productsData={featuredProducts}/>
+        <ProductsLayout productsData={featuredProducts}/>
     );
 }
 

@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
 import { scrollToTop } from "../components/common/ScrollToTop.js";
-import ProductDetail from "../components/shop/ProductDetail.jsx";
+import OneProductLayout from "../components/shop/products/OneProductLayout.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProduct } from "../util/http.js";
 import ShopLoader from "../components/shop/ShopLoader";
 import ErrorComponent from "../components/common/Error";
 import RelatedProducts from "../components/shop/products/RelatedProducts.jsx";
-import { getProductData } from "../store/singleProductSlice.jsx";
+import { getProductData } from "../store/singleProductSlice.js";
 import { useDispatch } from "react-redux";
 
 
@@ -50,7 +50,7 @@ function ProductPage() {
   return (
     <>
       <Breadcrumbs/>
-      <ProductDetail />
+      <OneProductLayout />
       <h2 className="font-semibold m-5 md:text-center md:mb-10">Related Products</h2>
       <div className="md:mx-32">
       <RelatedProducts productCategory = {productCategory}/>

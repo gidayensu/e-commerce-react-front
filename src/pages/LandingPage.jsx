@@ -6,24 +6,24 @@ import { scrollToTop } from "../components/common/ScrollToTop.js";
 import Categories from "../components/shop/categories/Categories.jsx";
 import Accordion from "../components/common/Accordion.jsx";
 import UserReviewSlider from "../components/common/UserReviewSlider.jsx";
-import { fetchData } from "../store/productSlice.jsx";
+import { fetchData } from "../store/productSlice.js";
 import FeaturedProducts from "../components/shop/products/FeaturedProducts.jsx";
 
 function LandingPage() {
   scrollToTop();
   const dispatch = useDispatch();
 
-    const { status, error } = useSelector((state) => state.products);
+    const { loading, error } = useSelector((state) => state.products);
 
     useEffect(() => {
         dispatch(fetchData());
       }, [dispatch]);
     
-      if (status === 'loading') {
-        return <div>Loading...</div>;
-      }
+      // if (loading) {
+      //   return <div><span className="loading loading-ring loading-md"></span></div>;
+      // }
     
-      if (status === 'failed') {
+      if (error) {
         return <div>Error: {error}</div>;
       }
     

@@ -1,4 +1,4 @@
-import ProductCarousel from "../ProductCarousel.jsx";
+import ProductCarousel from "./ProductCarousel.jsx";
 import ShopLoader from "../ShopLoader.jsx";
 import ErrorComponent from "../../common/Error.jsx";
 import { fetchProducts } from "../../../util/http.js";

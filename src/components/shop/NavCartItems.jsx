@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, addItem, removeProductFromCart } from "../../store/cartSlice.jsx";
+import { removeItem, addItem, removeProductFromCart } from "../../store/cartSlice.js";
 
 function CartItems({drawerToggler}) {
   const { items, totalPrice } = useSelector((state) => state.cart);

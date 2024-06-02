@@ -5,7 +5,7 @@ import Select from 'react-select';
 import countryList from 'react-select-country-list';
 
 
-function CheckoutForm () {
+export default function CheckoutForm () {
     const [country, setCountry] = useState('Ghana');
     const [phoneNumber, setPhoneNumber] = useState('');
     const options = useMemo(()=> countryList().getData(), []);
@@ -131,4 +131,3 @@ function CheckoutForm () {
     );
 }
 
-export default CheckoutForm;
