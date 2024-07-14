@@ -9,7 +9,7 @@ function FilterBase () {
     const [maxPrice, setMaxPrice] = useState(HIGHEST_PRICE);
     const [showAllCategories, setShowAllCategories] = useState(false);
 
-    const { categoryCounts, category:selectedCategory, filtered } = useSelector(state=>state.filter);
+    const {  category:selectedCategory, filtered } = useSelector(state=>state.filter);
     
     const { products } = useSelector(state=>state.products);
     const { categories } = useSelector(state=>state.categories);
@@ -40,8 +40,9 @@ function FilterBase () {
   const minPriceHandler = (event) => setMinPrice(event.target.value);
 
   const priceFilterHandler = ()=> {
-
+      
     dispatch(
+      
       filterByPrice({
         minPrice: numberMinPrice,
         maxPrice: numberMaxPrice,
@@ -78,7 +79,7 @@ function FilterBase () {
           onClick={() => categoryFilterHandler(category)}
         >
           <p className="ml-5">
-            {category} ({categoryCounts[category] ? categoryCounts[category] : 0})
+            {category} 
           </p>
         </span>
       );
