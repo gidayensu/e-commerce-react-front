@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import CheckoutForm from "../components/shop/CheckoutForm.jsx";
+
+import CheckoutForm from "../components/order/CheckoutForm.jsx";
 import OrderDetail from "../components/order/OrderDetail.jsx";
 import { useSelector } from "react-redux";
 import Breadcrumbs from "../components/common/Breadcrumbs.jsx";

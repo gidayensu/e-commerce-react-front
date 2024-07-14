@@ -1,15 +1,15 @@
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
-import { filterByPrice, filterByCategory, filterBySearch, clearFilters } from "../../../store/productFilterSlice.jsx";
+import { filterByPrice, filterByCategory, filterBySearch, clearFilters } from "../../../store/productFilterSlice.js";
 import { useState } from "react";
-import { HIGHEST_PRICE } from "../../../store/productFilterSlice.jsx";
+import { HIGHEST_PRICE } from "../../../store/productFilterSlice.js";
 
 function FilterBase () {
     const [minPrice, setMinPrice]  = useState(0);
     const [maxPrice, setMaxPrice] = useState(HIGHEST_PRICE);
     const [showAllCategories, setShowAllCategories] = useState(false);
 
-    const { categoryCounts, category:selectedCategory, filtered } = useSelector(state=>state.filter);
+    const {  category:selectedCategory, filtered } = useSelector(state=>state.filter);
     
     const { products } = useSelector(state=>state.products);
     const { categories } = useSelector(state=>state.categories);
@@ -40,8 +40,9 @@ function FilterBase () {
   const minPriceHandler = (event) => setMinPrice(event.target.value);
 
   const priceFilterHandler = ()=> {
-
+      
     dispatch(
+      
       filterByPrice({
         minPrice: numberMinPrice,
         maxPrice: numberMaxPrice,
@@ -78,7 +79,7 @@ function FilterBase () {
           onClick={() => categoryFilterHandler(category)}
         >
           <p className="ml-5">
-            {category} ({categoryCounts[category] ? categoryCounts[category] : 0})
+            {category} 
           </p>
         </span>
       );

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, addItem, removeProductFromCart  } from "../../store/cartSlice.jsx";
+import { removeItem, addItem, removeProductFromCart  } from "../../store/cartSlice.js";
 import { BsTrash3Fill } from "react-icons/bs";
 
 function OrderDetails () {

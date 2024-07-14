@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import NavCartItems from "./NavCartItems";
-import { clearCart } from "../../store/cartSlice.jsx";
+import { clearCart } from "../../store/cartSlice.js";
 
 function Cart() {
   const [drawerOpen, setDrawerOpen] = useState(false);

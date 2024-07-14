@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../../store/cartSlice.jsx";
+import { addItem } from "../../../store/cartSlice.js";
 import ShopLoader from "../ShopLoader.jsx";
 import ErrorComponent from "../../common/Error.jsx";
 import { useQuery } from "@tanstack/react-query";

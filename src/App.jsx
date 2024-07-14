@@ -2,7 +2,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './util/http.js';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import RootLayout from './pages/RootLayout.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
@@ -14,7 +14,7 @@ import ProductPage from './pages/ProductPage.jsx';
 import CheckoutPage from './pages/CheckoutPage.jsx';
 import CartPage from './pages/CartPage.jsx'
 import AboutUs from './pages/AboutUsPage.jsx';
-import { ToastContainer } from 'react-toastify';
+
 
 function App() {
   
@@ -104,7 +104,7 @@ function App() {
     
     <QueryClientProvider client ={queryClient}>
       
-    <ToastContainer position='top-center' limit={3}/>
+    
     <RouterProvider router={router}/>
     
     </QueryClientProvider>

@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cartSlice from './cartSlice.jsx';
-import productFilterSlice from './productFilterSlice.jsx';
-import productSlice from './productSlice.jsx';
-import singleProductSlice from './singleProductSlice.jsx';
-import categoriesSlice from './categoriesSlice.jsx';
+import cartSlice from './cartSlice.js';
+import productFilterSlice from './productFilterSlice.js';
+import productSlice from './productSlice.js';
+import singleProductSlice from './singleProductSlice.js';
+import categoriesSlice from './categoriesSlice.js';
 
 
 const store = configureStore({

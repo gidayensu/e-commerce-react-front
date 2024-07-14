@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import {  useRef } from 'react';
 
 function TopScroll({children}) {
     let prevLocationRef = useRef(null)
