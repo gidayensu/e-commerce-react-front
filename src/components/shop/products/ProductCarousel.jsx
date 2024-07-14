@@ -11,12 +11,12 @@ function ProductCarousel({ productsData }) {
   
   let recommendedProducts;
   
-    if(productsData.products.length === 0 || productsData === undefined) {
+    if(productsData.length === 0 || productsData === undefined) {
       return <div>error loading  products carousel</div>
   } else {
     
     
-    recommendedProducts = productsData.products.filter((product) => product.id != productId);
+    recommendedProducts = productsData.filter((product) => product.id != productId);
   }
 
   return (

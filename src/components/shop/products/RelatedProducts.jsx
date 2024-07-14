@@ -32,8 +32,17 @@ function RelatedProducts ( ) {
              </div>
         );
       }
+
+      function randomProducts() {
+        const productsData = data.products;
+        let count = 5;
+        productsData.length < 5 ? count = productsData.length: '';
+        const shuffled = productsData.slice().sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+      }
+      
     return (
-        <ProductCarousel productsData={data}/>
+        <ProductCarousel productsData={randomProducts()}/>
     );
 }
 
