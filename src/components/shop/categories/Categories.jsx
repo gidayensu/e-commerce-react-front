@@ -44,27 +44,42 @@ function Categories() {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
+const list = ['m-watc', ]
   const categoryImages = [
-    "https://i.postimg.cc/Fz8Hp72D/smartphones.jpg",
-    "https://i.postimg.cc/GmJb87hM/laptops.webp",
-    "https://i.postimg.cc/YC1CN28z/fragrances.jpg",
     "https://i.postimg.cc/G2NRw6qp/skincare.jpg",
-    "https://i.postimg.cc/QxKttJTP/groceries.jpg",
-    "https://i.postimg.cc/hGcP2F5W/home-decor.jpg",
+    "https://i.postimg.cc/YC1CN28z/fragrances.jpg",
     "https://i.postimg.cc/nL2V5dys/furniture.jpg",
-    "https://get.pxhere.com/photo/women-lady-model-person-photography-wallpaper-plant-flower-smile-facial-expression-People-in-nature-leaf-flash-photography-happy-sunlight-grass-petal-leisure-people-natural-landscape-meadow-beauty-tree-lawn-electric-blue-fun-landscape-blond-brown-hair-annual-plant-grassland-garden-flowering-plant-wildflower-sitting-t-shirt-recreation-portrait-photography-vacation-laugh-child-shrub-floral-design-photo-shoot-portrait-floristry-1637546.jpg",
-    "https://c.pxhere.com/images/07/c0/27b9d3cff0302be094e89f542241-1681230.jpg!d",
-    "https://i.postimg.cc/x1rdbNGd/womens-shoes.jpg",
+    "https://i.postimg.cc/QxKttJTP/groceries.jpg",
+    "https://cdn.dummyjson.com/products/images/home-decoration/Family%20Tree%20Photo%20Frame/1.png",
+    "https://cdn.dummyjson.com/products/images/kitchen-accessories/Carbon%20Steel%20Wok/1.png",
+    "https://i.postimg.cc/GmJb87hM/laptops.webp",
     "https://c.pxhere.com/photos/a9/1d/business_suit_business_man_professional_suit_businessman_tie_confident-893391.jpg!d",
     "https://i.postimg.cc/W4NTMGds/men-shoes.jpg",
     "https://i.postimg.cc/TwP2XVxt/men-watches.jpg",
+    "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/1.png",
+    "https://i.postimg.cc/yxM792ZG/motorcycle.jpg",
+    "https://i.postimg.cc/G2NRw6qp/skincare.jpg",
+    "https://i.postimg.cc/Fz8Hp72D/smartphones.jpg",
+    "https://cdn.dummyjson.com/products/images/sports-accessories/Tennis%20Ball/1.png",
+    "https://i.postimg.cc/CKcYJR8k/sun-glasses.webp",
+    "https://cdn.dummyjson.com/products/images/tablets/Samsung%20Galaxy%20Tab%20S8%20Plus%20Grey/2.png",
+    "https://get.pxhere.com/photo/women-lady-model-person-photography-wallpaper-plant-flower-smile-facial-expression-People-in-nature-leaf-flash-photography-happy-sunlight-grass-petal-leisure-people-natural-landscape-meadow-beauty-tree-lawn-electric-blue-fun-landscape-blond-brown-hair-annual-plant-grassland-garden-flowering-plant-wildflower-sitting-t-shirt-recreation-portrait-photography-vacation-laugh-child-shrub-floral-design-photo-shoot-portrait-floristry-1637546.jpg",
+    "https://i.postimg.cc/C1d02wCt/automotive.jpg",
+    "https://i.postimg.cc/X75j37M6/womens-bags.webp",
+    "https://c.pxhere.com/images/07/c0/27b9d3cff0302be094e89f542241-1681230.jpg!d",
+    "https://i.postimg.cc/bYBrpBsk/womens-jewelery.jpg",
+    "https://i.postimg.cc/x1rdbNGd/womens-shoes.jpg",
+    "https://i.postimg.cc/LhFMhLdK/womens-watches.jpg",
+    "https://c.pxhere.com/photos/a9/1d/business_suit_business_man_professional_suit_businessman_tie_confident-893391.jpg!d",
+    
+    "https://i.postimg.cc/yxM792ZG/motorcycle.jpg",
+    
+    
     "https://i.postimg.cc/LhFMhLdK/womens-watches.jpg",
     "https://i.postimg.cc/X75j37M6/womens-bags.webp",
     "https://i.postimg.cc/bYBrpBsk/womens-jewelery.jpg",
     "https://i.postimg.cc/CKcYJR8k/sun-glasses.webp",
     "https://i.postimg.cc/C1d02wCt/automotive.jpg",
-    "https://i.postimg.cc/yxM792ZG/motorcycle.jpg",
     "https://i.postimg.cc/ry3VvRP9/lighting.jpg",
   ];
 
